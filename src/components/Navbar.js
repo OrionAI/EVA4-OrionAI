@@ -26,7 +26,10 @@ class Navbar extends React.Component {
       this.props.history.location.pathname
     ];
     return (
-      <nav className="navbar navbar-expand-lg navbar-light bg-light">
+      <nav
+        className="navbar navbar-expand-lg navbar-dark"
+        style={{ backgroundColor: '#000000' }}
+      >
         <div className="container">
           <Link to="/" className="navbar-brand">
             Orion AI
