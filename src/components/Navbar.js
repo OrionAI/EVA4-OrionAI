@@ -8,11 +8,6 @@ class Navbar extends React.Component {
     this.state = {
       collapsed: true,
     };
-
-    this.componentPath = {
-      '/': 'home',
-      '/resnet34': 'resnet34',
-    };
   }
 
   toggleNavbar = () => {
@@ -22,7 +17,7 @@ class Navbar extends React.Component {
   };
 
   render() {
-    const activeNavItem = this.componentPath[
+    const activeNavItem = this.props.componentPath[
       this.props.history.location.pathname
     ];
     return (
@@ -69,12 +64,12 @@ class Navbar extends React.Component {
               </li>
               <li className="nav-item">
                 <Link
-                  to="/resnet34"
+                  to="/mobilenetv2"
                   className={`nav-link ${
-                    activeNavItem === 'resnet34' ? 'active' : ''
+                    activeNavItem === 'mobilenetv2' ? 'active' : ''
                   }`}
                 >
-                  ResNet34
+                  MobileNetV2
                 </Link>
               </li>
             </ul>
