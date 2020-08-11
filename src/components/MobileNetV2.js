@@ -18,7 +18,7 @@ class MobileNetV2 extends React.Component {
 
   onSubmit = (data, imageURL) => {
     this.props.submitForm(
-      'https://dkla5xrjb0.execute-api.ap-south-1.amazonaws.com/dev/classify',
+      'https://5a7jq62zm2.execute-api.ap-south-1.amazonaws.com/dev/classify',
       this.formName,
       data
     );
@@ -57,6 +57,22 @@ class MobileNetV2 extends React.Component {
         <div className="row">
           <div className="col">
             <h1 className="heading">MobileNetV2</h1>
+          </div>
+        </div>
+
+        <div className="row my-4">
+          <div className="col-6 mx-auto">
+            <p align="justify">
+              This model is a custom version of MobileNet v2. It was trained on
+              a custom dataset to classify among images belonging to the 4
+              classes below
+            </p>
+            <ul>
+              <li>Flying Birds</li>
+              <li>Large QuadCopters</li>
+              <li>Small QuadCopters</li>
+              <li>Winged Drones</li>
+            </ul>
           </div>
         </div>
 
