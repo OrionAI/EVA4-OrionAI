@@ -23,7 +23,7 @@ class App extends React.Component {
       <div className="page-container">
         <div className="content-wrap">
           <Router history={history}>
-            <Navbar history={history} componentPath={this.componentPath} />
+            <Navbar componentPath={this.componentPath} />
             <div className="container">
               <Switch>
                 <Route path="/" exact component={Home} />
