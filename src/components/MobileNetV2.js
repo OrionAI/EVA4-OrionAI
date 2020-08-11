@@ -1,9 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Field, reduxForm } from 'redux-form';
 
-import { renderFormField, renderSubmitButton } from '../utils';
 import { submitForm } from '../actions';
+import Form from './Form';
 
 class MobileNetV2 extends React.Component {
   constructor(props) {
@@ -13,24 +12,22 @@ class MobileNetV2 extends React.Component {
       imageURL: null,
     };
 
+    this.formName = 'mobileNetV2';
     this.submitButtonRef = React.createRef();
   }
 
-  onSubmit = formValues => {
-    const data = new FormData();
-    data.append('image', formValues.image[0]);
-
+  onSubmit = (data, imageURL) => {
     this.props.submitForm(
       'https://dkla5xrjb0.execute-api.ap-south-1.amazonaws.com/dev/classify',
-      this.props.form,
+      this.formName,
       data
     );
 
-    this.setState({ imageURL: URL.createObjectURL(formValues.image[0]) });
+    this.setState({ imageURL });
   };
 
   renderOutput() {
-    if (this.props.modelForm.name === this.props.form) {
+    if (this.props.modelForm.name === this.formName) {
       return (
         <div className="row mt-5">
           <div className="col-6 mx-auto">
@@ -65,25 +62,7 @@ class MobileNetV2 extends React.Component {
 
         <div className="row my-4">
           <div className="col-6 mx-auto">
-            <form onSubmit={this.props.handleSubmit(this.onSubmit)}>
-              <Field
-                name="image"
-                component={renderFormField}
-                contentType="image"
-                label="Upload Image"
-                required
-              />
-              <div className="row mt-3">
-                <div className="col mx-auto">
-                  {renderSubmitButton({
-                    loading: this.props.loadingForm.includes(this.props.form),
-                    originalText: 'Predict',
-                    loadingText: 'Predicting...',
-                    ref: this.submitButtonRef,
-                  })}
-                </div>
-              </div>
-            </form>
+            <Form form={this.formName} onSubmit={this.onSubmit} />
           </div>
         </div>
 
@@ -93,27 +72,8 @@ class MobileNetV2 extends React.Component {
   }
 }
 
-const validate = formValues => {
-  const errors = {};
-
-  // console.log(formValues);
-  if (!formValues.image) {
-    errors.image = 'Please upload an image';
-  }
-
-  return errors;
+const mapStateToProps = ({ modelForm }) => {
+  return { modelForm };
 };
 
-const mapStateToProps = ({ loadingForm, modelForm }) => {
-  return {
-    loadingForm,
-    modelForm,
-  };
-};
-
-export default connect(mapStateToProps, { submitForm })(
-  reduxForm({
-    form: 'mobileNetV2',
-    validate,
-  })(MobileNetV2)
-);
+export default connect(mapStateToProps, { submitForm })(MobileNetV2);

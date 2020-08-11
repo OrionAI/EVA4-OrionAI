@@ -20,11 +20,15 @@ export const submitForm = (url, formName, formValues) => async dispatch => {
     dispatch(loadingForm(formName));
   }
 
-  const response = await api.post(url, formValues);
-  dispatch({
-    type: SUBMIT_FORM,
-    payload: { name: formName, data: response.data },
-  });
+  try {
+    const response = await api.post(url, formValues);
+    dispatch({
+      type: SUBMIT_FORM,
+      payload: { name: formName, data: response.data },
+    });
+  } catch (error) {
+    console.log(error);
+  }
 
   if (formName) {
     dispatch(clearLoadingForm(formName));
