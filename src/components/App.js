@@ -27,11 +27,7 @@ class App extends React.Component {
             <div className="container">
               <Switch>
                 <Route path="/" exact component={Home} />
-                <Route
-                  path="/mobilenetv2"
-                  exact
-                  render={() => <MobileNetV2 />}
-                />
+                <Route path="/mobilenetv2" exact component={MobileNetV2} />
               </Switch>
             </div>
           </Router>
