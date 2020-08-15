@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import React from 'react';
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
@@ -10,23 +11,31 @@ class Form extends React.Component {
     this.submitButtonRef = React.createRef();
   }
 
-  onSubmit = formValues => {
+  onSubmit = (formValues) => {
     const data = new FormData();
-    data.append('image', formValues.image[0]);
-
-    this.props.onSubmit(data, URL.createObjectURL(formValues.image[0]));
+    let imgURL = {};
+    for (let i in formValues) {
+      data.append(i, formValues[i][0]);
+      imgURL[i] = URL.createObjectURL(formValues[i][0]);
+    }
+    this.props.onSubmit(data, imgURL);
   };
 
   render() {
     return (
       <form onSubmit={this.props.handleSubmit(this.onSubmit)}>
-        <Field
-          name="image"
-          component={renderFormField}
-          contentType="image"
-          label="Upload Image"
-          required
-        />
+        {_.map(this.props.fields, (item) => {
+          return (
+            <Field
+              name={item.name}
+              key={item.name}
+              component={renderFormField}
+              contentType={item.contentType}
+              label={item.label}
+              required
+            />
+          );
+        })}
         <div className="row mt-3">
           <div className="col mx-auto">
             {renderSubmitButton({
@@ -36,13 +45,19 @@ class Form extends React.Component {
               ref: this.submitButtonRef,
             })}
           </div>
+          <div className="col-12">
+            <small>
+              *The model might not give predictions for the first 1-2 times. In
+              such cases, please try again.
+            </small>
+          </div>
         </div>
       </form>
     );
   }
 }
 
-const validate = formValues => {
+const validate = (formValues) => {
   const errors = {};
 
   // console.log(formValues);

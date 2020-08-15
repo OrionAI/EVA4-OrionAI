@@ -27,6 +27,12 @@ class Navbar extends React.Component {
       >
         <div className="container">
           <Link to="/" className="navbar-brand">
+            <img
+              src={`${process.env.PUBLIC_URL}/orionai.png`}
+              style={{ height: '2rem' }}
+              className="mr-2"
+              alt="logo"
+            />{' '}
             Orion AI
           </Link>
           <button
@@ -64,12 +70,42 @@ class Navbar extends React.Component {
               </li>
               <li className="nav-item">
                 <Link
+                  to="/resnet34"
+                  className={`nav-link ${
+                    activeNavItem === 'resnet34' ? 'active' : ''
+                  }`}
+                >
+                  ResNet34
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link
                   to="/mobilenetv2"
                   className={`nav-link ${
                     activeNavItem === 'mobilenetv2' ? 'active' : ''
                   }`}
                 >
                   MobileNetV2
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link
+                  to="/align"
+                  className={`nav-link ${
+                    activeNavItem === 'facealignment' ? 'active' : ''
+                  }`}
+                >
+                  Face Alignment
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link
+                  to="/swap"
+                  className={`nav-link ${
+                    activeNavItem === 'faceswap' ? 'active' : ''
+                  }`}
+                >
+                  Face Swap
                 </Link>
               </li>
             </ul>

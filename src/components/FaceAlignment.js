@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { submitForm } from '../actions';
 import Form from './Form';
 
-class MobileNetV2 extends React.Component {
+class FaceAlignment extends React.Component {
   constructor(props) {
     super(props);
 
@@ -12,13 +12,13 @@ class MobileNetV2 extends React.Component {
       imageURL: null,
     };
 
-    this.formName = 'mobilenetv2';
+    this.formName = 'facealignment';
     this.submitButtonRef = React.createRef();
   }
 
   onSubmit = (data, imgURL) => {
     this.props.submitForm(
-      'https://5a7jq62zm2.execute-api.ap-south-1.amazonaws.com/dev/classify',
+      'https://tq1mihfdxd.execute-api.ap-south-1.amazonaws.com/dev/align',
       this.formName,
       data
     );
@@ -30,18 +30,27 @@ class MobileNetV2 extends React.Component {
     if (this.props.modelForm.name === this.formName) {
       return (
         <div className="row mt-5">
-          <div className="col-6 mx-auto">
+          <div className="col-6 ml-auto">
             <div className="card" style={{ width: '20rem' }}>
               <img
                 src={this.state.imageURL}
                 className="card-img-top"
-                alt="dum"
+                alt="source"
               />
               <div className="card-body">
-                <h5 className="card-title">Prediction</h5>
-                <p className="card-text">
-                  {this.props.modelForm.data['predicted name']}
-                </p>
+                <p className="card-text">Input Image</p>
+              </div>
+            </div>
+          </div>
+          <div className="col-6 mr-auto">
+            <div className="card" style={{ width: '20rem' }}>
+              <img
+                src={`data:image/jpeg;base64,${this.props.modelForm.data}`}
+                className="card-img-top"
+                alt="aligned"
+              />
+              <div className="card-body">
+                <p className="card-text">Aligned Image</p>
               </div>
             </div>
           </div>
@@ -56,23 +65,16 @@ class MobileNetV2 extends React.Component {
       <React.Fragment>
         <div className="row">
           <div className="col">
-            <h1 className="heading">MobileNetV2</h1>
+            <h1 className="heading">Face Alignment</h1>
           </div>
         </div>
 
         <div className="row my-4">
           <div className="col-6 mx-auto">
             <p align="justify">
-              This model is a custom version of MobileNet v2. It was trained on
-              a custom dataset to classify among images belonging to the 4
-              classes below
+              This model uses dlib to perform face alignment tasks. Upload the
+              image of a face below to run the model.
             </p>
-            <ul>
-              <li>Flying Birds</li>
-              <li>Large QuadCopters</li>
-              <li>Small QuadCopters</li>
-              <li>Winged Drones</li>
-            </ul>
           </div>
         </div>
 
@@ -82,7 +84,11 @@ class MobileNetV2 extends React.Component {
               form={this.formName}
               onSubmit={this.onSubmit}
               fields={[
-                { name: 'image', contentType: 'image', label: 'Upload Image' },
+                {
+                  name: 'image',
+                  contentType: 'image',
+                  label: 'Upload Face Image',
+                },
               ]}
             />
           </div>
@@ -98,4 +104,4 @@ const mapStateToProps = ({ modelForm }) => {
   return { modelForm };
 };
 
-export default connect(mapStateToProps, { submitForm })(MobileNetV2);
+export default connect(mapStateToProps, { submitForm })(FaceAlignment);
