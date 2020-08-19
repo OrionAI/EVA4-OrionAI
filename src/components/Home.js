@@ -22,6 +22,9 @@ const Home = () => {
         </div>
       </div>
       <div className="row mt-4">
+        <div className="col-12 text-center mt-5 mb-3">
+          <h3>Classification Models</h3>
+        </div>
         <div className="col-6 text-right">
           <Link to="/resnet34">
             <button type="button" className="btn border border-secondary">
@@ -38,6 +41,9 @@ const Home = () => {
         </div>
       </div>
       <div className="row mt-4">
+        <div className="col-12 text-center mt-5 mb-3">
+          <h3>Face Recognition Models</h3>
+        </div>
         <div className="col-6 text-right">
           <Link to="/align">
             <button type="button" className="btn border border-secondary">
