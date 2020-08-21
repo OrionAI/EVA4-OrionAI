@@ -61,7 +61,7 @@ class MobileNetV2 extends React.Component {
         </div>
 
         <div className="row my-4">
-          <div className="col-6 mx-auto">
+          <div className="col-8 mx-auto">
             <p align="justify">
               This model is a custom version of MobileNet v2. It was trained on
               a custom dataset to classify among images belonging to the 4

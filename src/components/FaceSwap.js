@@ -32,61 +32,81 @@ class FaceSwap extends React.Component {
 
   renderOutput() {
     if (this.props.modelForm.name === this.formName) {
-      return (
-        <div className="row mt-5">
-          <div className="col-7 ml-auto">
-            <div className="row">
-              <div className="col-12 mb-4">
-                <h3 className="text-center">Inputs</h3>
-              </div>
-              <div className="col-6">
-                <div className="card">
-                  <img
-                    src={this.state.sourceImageURL}
-                    className="card-img-top"
-                    alt="source"
-                  />
-                  <div className="card-body">
-                    <p className="card-text">Source Image</p>
+      if (this.props.modelForm.data.result === 'success') {
+        return (
+          <div className="row mt-5">
+            <div className="col-7 ml-auto">
+              <div className="row">
+                <div className="col-12 mb-4">
+                  <h3 className="text-center">Inputs</h3>
+                </div>
+                <div className="col-6">
+                  <div className="card">
+                    <img
+                      src={this.state.sourceImageURL}
+                      className="card-img-top"
+                      alt="source"
+                    />
+                    <div className="card-body">
+                      <p className="card-text">Source Image</p>
+                    </div>
+                  </div>
+                </div>
+                <div className="col-6">
+                  <div className="card">
+                    <img
+                      src={this.state.targetImageURL}
+                      className="card-img-top"
+                      alt="target"
+                    />
+                    <div className="card-body">
+                      <p className="card-text">Target Image</p>
+                    </div>
                   </div>
                 </div>
               </div>
-              <div className="col-6">
+            </div>
+            <div className="col-1" />
+            <div className="col-4 mr-auto">
+              <div className="row">
+                <div className="col-12 mb-4">
+                  <h3 className="text-center">Outputs</h3>
+                </div>
+              </div>
+              <div className="col-12">
                 <div className="card">
                   <img
-                    src={this.state.targetImageURL}
+                    src={`data:image/jpeg;base64,${this.props.modelForm.data.data}`}
                     className="card-img-top"
-                    alt="target"
+                    alt="swap"
                   />
                   <div className="card-body">
-                    <p className="card-text">Target Image</p>
+                    <p className="card-text">Swapped Image</p>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <div className="col-1" />
-          <div className="col-4 mr-auto">
-            <div className="row">
-              <div className="col-12 mb-4">
-                <h3 className="text-center">Outputs</h3>
-              </div>
-            </div>
+        );
+      } else {
+        return (
+          <div className="row mt-5">
             <div className="col-12">
-              <div className="card">
-                <img
-                  src={`data:image/jpeg;base64,${this.props.modelForm.data}`}
-                  className="card-img-top"
-                  alt="swap"
-                />
-                <div className="card-body">
-                  <p className="card-text">Swapped Image</p>
-                </div>
+              <div className="alert alert-danger">
+                {this.props.modelForm.data.data}
+                <button
+                  type="button"
+                  className="close"
+                  data-dismiss="alert"
+                  aria-label="Close"
+                >
+                  <span aria-hidden="true">&times;</span>
+                </button>
               </div>
             </div>
           </div>
-        </div>
-      );
+        );
+      }
     }
     return '';
   }
@@ -101,7 +121,7 @@ class FaceSwap extends React.Component {
         </div>
 
         <div className="row my-4">
-          <div className="col-6 mx-auto">
+          <div className="col-8 mx-auto">
             <p align="justify">
               This model uses dlib to perform face swapping tasks. The face of
               the source image will be swapped to the target image face. Upload

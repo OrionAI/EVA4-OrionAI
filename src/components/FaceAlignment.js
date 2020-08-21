@@ -28,34 +28,54 @@ class FaceAlignment extends React.Component {
 
   renderOutput() {
     if (this.props.modelForm.name === this.formName) {
-      return (
-        <div className="row mt-5">
-          <div className="col-6 ml-auto">
-            <div className="card" style={{ width: '20rem' }}>
-              <img
-                src={this.state.imageURL}
-                className="card-img-top"
-                alt="source"
-              />
-              <div className="card-body">
-                <p className="card-text">Input Image</p>
+      if (this.props.modelForm.data.result === 'success') {
+        return (
+          <div className="row mt-5">
+            <div className="col-6 ml-auto">
+              <div className="card" style={{ width: '20rem' }}>
+                <img
+                  src={this.state.imageURL}
+                  className="card-img-top"
+                  alt="source"
+                />
+                <div className="card-body">
+                  <p className="card-text">Input Image</p>
+                </div>
+              </div>
+            </div>
+            <div className="col-6 mr-auto">
+              <div className="card" style={{ width: '20rem' }}>
+                <img
+                  src={`data:image/jpeg;base64,${this.props.modelForm.data.data}`}
+                  className="card-img-top"
+                  alt="aligned"
+                />
+                <div className="card-body">
+                  <p className="card-text">Aligned Image</p>
+                </div>
               </div>
             </div>
           </div>
-          <div className="col-6 mr-auto">
-            <div className="card" style={{ width: '20rem' }}>
-              <img
-                src={`data:image/jpeg;base64,${this.props.modelForm.data}`}
-                className="card-img-top"
-                alt="aligned"
-              />
-              <div className="card-body">
-                <p className="card-text">Aligned Image</p>
+        );
+      } else {
+        return (
+          <div className="row mt-5">
+            <div className="col-12">
+              <div className="alert alert-danger">
+                {this.props.modelForm.data.data}
+                <button
+                  type="button"
+                  className="close"
+                  data-dismiss="alert"
+                  aria-label="Close"
+                >
+                  <span aria-hidden="true">&times;</span>
+                </button>
               </div>
             </div>
           </div>
-        </div>
-      );
+        );
+      }
     }
     return '';
   }
@@ -70,7 +90,7 @@ class FaceAlignment extends React.Component {
         </div>
 
         <div className="row my-4">
-          <div className="col-6 mx-auto">
+          <div className="col-8 mx-auto">
             <p align="justify">
               This model uses dlib to perform face alignment tasks. Upload the
               image of a face below to run the model.
