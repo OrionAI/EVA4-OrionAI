@@ -68,55 +68,91 @@ class Navbar extends React.Component {
                   Home
                 </Link>
               </li>
-              <li className="nav-item">
+              <li className="nav-item dropdown">
                 <Link
-                  to="/resnet34"
-                  className={`nav-link ${
-                    activeNavItem === 'resnet34' ? 'active' : ''
+                  className={`nav-link dropdown-toggle ${
+                    ['resnet34', 'mobilenetv2'].includes(activeNavItem)
+                      ? 'active'
+                      : ''
                   }`}
+                  to="#"
+                  id="classification-dropdown"
+                  role="button"
+                  data-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
                 >
-                  ResNet34
+                  Classification
                 </Link>
-              </li>
-              <li className="nav-item">
-                <Link
-                  to="/mobilenetv2"
-                  className={`nav-link ${
-                    activeNavItem === 'mobilenetv2' ? 'active' : ''
-                  }`}
+                <div
+                  className="dropdown-menu"
+                  aria-labelledby="classification-dropdown"
                 >
-                  MobileNetV2
-                </Link>
+                  <Link
+                    to="/resnet34"
+                    className={`dropdown-item ${
+                      activeNavItem === 'resnet34' ? 'active' : ''
+                    }`}
+                  >
+                    ResNet34
+                  </Link>
+                  <Link
+                    to="/mobilenetv2"
+                    className={`dropdown-item ${
+                      activeNavItem === 'mobilenetv2' ? 'active' : ''
+                    }`}
+                  >
+                    MobileNetV2
+                  </Link>
+                </div>
               </li>
-              <li className="nav-item">
+              <li className="nav-item dropdown">
                 <Link
-                  to="/align"
-                  className={`nav-link ${
-                    activeNavItem === 'facealignment' ? 'active' : ''
+                  className={`nav-link dropdown-toggle ${
+                    ['facealignment', 'faceswap', 'facerecognition'].includes(
+                      activeNavItem
+                    )
+                      ? 'active'
+                      : ''
                   }`}
-                >
-                  Face Alignment
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link
-                  to="/swap"
-                  className={`nav-link ${
-                    activeNavItem === 'faceswap' ? 'active' : ''
-                  }`}
-                >
-                  Face Swap
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link
-                  to="/recognize"
-                  className={`nav-link ${
-                    activeNavItem === 'facerecognition' ? 'active' : ''
-                  }`}
+                  to="#"
+                  id="face-recognition-dropdown"
+                  role="button"
+                  data-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
                 >
                   Face Recognition
                 </Link>
+                <div
+                  className="dropdown-menu"
+                  aria-labelledby="face-recognition-dropdown"
+                >
+                  <Link
+                    to="/align"
+                    className={`dropdown-item ${
+                      activeNavItem === 'facealignment' ? 'active' : ''
+                    }`}
+                  >
+                    Face Alignment
+                  </Link>
+                  <Link
+                    to="/swap"
+                    className={`dropdown-item ${
+                      activeNavItem === 'faceswap' ? 'active' : ''
+                    }`}
+                  >
+                    Face Swap
+                  </Link>
+                  <Link
+                    to="/recognize"
+                    className={`dropdown-item ${
+                      activeNavItem === 'facerecognition' ? 'active' : ''
+                    }`}
+                  >
+                    Face Recognition
+                  </Link>
+                </div>
               </li>
             </ul>
           </div>
