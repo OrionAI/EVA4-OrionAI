@@ -8,6 +8,7 @@ import ResNet34 from './classification/ResNet34';
 import MobileNetV2 from './classification/MobileNetV2';
 import FaceAlignment from './faceRecognition/FaceAlignment';
 import FaceSwap from './faceRecognition/FaceSwap';
+import FaceRecognition from './faceRecognition/FaceRecognition';
 import Footer from './Footer';
 
 import '../styles/App.css';
@@ -21,6 +22,7 @@ class App extends React.Component {
       '/resnet34': 'resnet34',
       '/align': 'facealignment',
       '/swap': 'faceswap',
+      '/recognize': 'facerecognition',
     };
   }
 
@@ -37,6 +39,7 @@ class App extends React.Component {
                 <Route path="/mobilenetv2" exact component={MobileNetV2} />
                 <Route path="/align" exact component={FaceAlignment} />
                 <Route path="/swap" exact component={FaceSwap} />
+                <Route path="/recognize" exact component={FaceRecognition} />
               </Switch>
             </div>
           </Router>

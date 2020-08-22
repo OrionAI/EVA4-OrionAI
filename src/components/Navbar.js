@@ -108,6 +108,16 @@ class Navbar extends React.Component {
                   Face Swap
                 </Link>
               </li>
+              <li className="nav-item">
+                <Link
+                  to="/recognize"
+                  className={`nav-link ${
+                    activeNavItem === 'facerecognition' ? 'active' : ''
+                  }`}
+                >
+                  Face Recognition
+                </Link>
+              </li>
             </ul>
           </div>
         </div>

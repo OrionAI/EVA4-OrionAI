@@ -44,17 +44,24 @@ const Home = () => {
         <div className="col-12 text-center mt-5 mb-3">
           <h3>Face Recognition Models</h3>
         </div>
-        <div className="col-6 text-right">
+        <div className="col-3 ml-auto text-right">
           <Link to="/align">
             <button type="button" className="btn border border-secondary">
               Face Alignment
             </button>
           </Link>
         </div>
-        <div className="col-6 text-left">
+        <div className="col-2 text-center">
           <Link to="/swap">
             <button type="button" className="btn border border-secondary">
               Face Swap
+            </button>
+          </Link>
+        </div>
+        <div className="col-3 mr-auto text-left">
+          <Link to="/recognize">
+            <button type="button" className="btn border border-secondary">
+              Face Recognition
             </button>
           </Link>
         </div>

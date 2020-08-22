@@ -11,7 +11,7 @@ class Form extends React.Component {
     this.submitButtonRef = React.createRef();
   }
 
-  onSubmit = (formValues) => {
+  onSubmit = formValues => {
     const data = new FormData();
     let imgURL = {};
     for (let i in formValues) {
@@ -24,7 +24,7 @@ class Form extends React.Component {
   render() {
     return (
       <form onSubmit={this.props.handleSubmit(this.onSubmit)}>
-        {_.map(this.props.fields, (item) => {
+        {_.map(this.props.fields, item => {
           return (
             <Field
               name={item.name}
@@ -57,7 +57,7 @@ class Form extends React.Component {
   }
 }
 
-const validate = (formValues) => {
+const validate = formValues => {
   const errors = {};
 
   // console.log(formValues);
