@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { submitForm } from '../actions';
-import Form from './Form';
+import { submitForm } from '../../actions';
+import Form from '../Form';
 
 class FaceAlignment extends React.Component {
   constructor(props) {

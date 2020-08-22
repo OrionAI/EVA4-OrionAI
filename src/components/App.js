@@ -4,10 +4,10 @@ import { Router, Route, Switch } from 'react-router-dom';
 import history from '../history';
 import Navbar from './Navbar';
 import Home from './Home';
-import ResNet34 from './ResNet34';
-import MobileNetV2 from './MobileNetV2';
-import FaceAlignment from './FaceAlignment';
-import FaceSwap from './FaceSwap';
+import ResNet34 from './classification/ResNet34';
+import MobileNetV2 from './classification/MobileNetV2';
+import FaceAlignment from './faceRecognition/FaceAlignment';
+import FaceSwap from './faceRecognition/FaceSwap';
 import Footer from './Footer';
 
 import '../styles/App.css';

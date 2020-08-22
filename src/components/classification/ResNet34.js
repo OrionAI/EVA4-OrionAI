@@ -1,10 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { submitForm } from '../actions';
-import Form from './Form';
+import { submitForm } from '../../actions';
+import Form from '../Form';
 
-class MobileNetV2 extends React.Component {
+class ResNet34 extends React.Component {
   constructor(props) {
     super(props);
 
@@ -12,13 +12,13 @@ class MobileNetV2 extends React.Component {
       imageURL: null,
     };
 
-    this.formName = 'mobilenetv2';
+    this.formName = 'resnet34';
     this.submitButtonRef = React.createRef();
   }
 
   onSubmit = (data, imgURL) => {
     this.props.submitForm(
-      'https://5a7jq62zm2.execute-api.ap-south-1.amazonaws.com/dev/classify',
+      'https://ji5h693qhd.execute-api.ap-south-1.amazonaws.com/dev/classify_image',
       this.formName,
       data
     );
@@ -56,23 +56,15 @@ class MobileNetV2 extends React.Component {
       <React.Fragment>
         <div className="row">
           <div className="col">
-            <h1 className="heading">MobileNetV2</h1>
+            <h1 className="heading">ResNet34</h1>
           </div>
         </div>
 
         <div className="row my-4">
           <div className="col-8 mx-auto">
             <p align="justify">
-              This model is a custom version of MobileNet v2. It was trained on
-              a custom dataset to classify among images belonging to the 4
-              classes below
+              This is a ResNet34 model trained on the ImageNet dataset.
             </p>
-            <ul>
-              <li>Flying Birds</li>
-              <li>Large QuadCopters</li>
-              <li>Small QuadCopters</li>
-              <li>Winged Drones</li>
-            </ul>
           </div>
         </div>
 
@@ -98,4 +90,4 @@ const mapStateToProps = ({ modelForm }) => {
   return { modelForm };
 };
 
-export default connect(mapStateToProps, { submitForm })(MobileNetV2);
+export default connect(mapStateToProps, { submitForm })(ResNet34);

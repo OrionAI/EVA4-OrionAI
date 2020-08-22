@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { submitForm } from '../actions';
-import Form from './Form';
+import { submitForm } from '../../actions';
+import Form from '../Form';
 
 class FaceSwap extends React.Component {
   constructor(props) {
