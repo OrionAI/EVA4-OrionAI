@@ -40,7 +40,7 @@ class MobileNetV2 extends React.Component {
               <div className="card-body">
                 <h5 className="card-title">Prediction</h5>
                 <p className="card-text">
-                  {this.props.modelForm.data['predicted name']}
+                  {this.props.modelForm.data['predicted_name']}
                 </p>
               </div>
             </div>

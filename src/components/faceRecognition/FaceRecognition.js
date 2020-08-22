@@ -31,26 +31,47 @@ class FaceRecognition extends React.Component {
 
   renderOutput() {
     if (this.props.modelForm.name === this.formName) {
-      return (
-        <div className="row mt-5">
-          <div className="col-7 ml-auto text-center">
-            <h3 className="text-center mb-5">Input Image</h3>
-            <img
-              src={this.state.imageURL}
-              className="card-img-top"
-              alt="input"
-              style={{ width: '30rem' }}
-            />
+      console.log(this.props.modelForm.data);
+      if (this.props.modelForm.data.result === 'success') {
+        return (
+          <div className="row mt-5">
+            <div className="col-7 ml-auto text-center">
+              <h3 className="text-center mb-5">Input Image</h3>
+              <img
+                src={this.state.imageURL}
+                className="card-img-top"
+                alt="input"
+                style={{ width: '30rem' }}
+              />
+            </div>
+            <div className="col-1" />
+            <div className="col-4 mr-auto text-center">
+              <h3 className="text-center mb-5">Prediction</h3>
+              <h2 style={{ marginTop: '10rem' }}>
+                {this.props.modelForm.data.data['predicted_name']}
+              </h2>
+            </div>
           </div>
-          <div className="col-1" />
-          <div className="col-4 mr-auto text-center">
-            <h3 className="text-center mb-5">Prediction</h3>
-            <h2 style={{ marginTop: '10rem' }}>
-              {this.props.modelForm.data['predicted name']}
-            </h2>
+        );
+      } else {
+        return (
+          <div className="row mt-5">
+            <div className="col-12">
+              <div className="alert alert-danger">
+                {this.props.modelForm.data.data}
+                <button
+                  type="button"
+                  className="close"
+                  data-dismiss="alert"
+                  aria-label="Close"
+                >
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+            </div>
           </div>
-        </div>
-      );
+        );
+      }
     }
     return '';
   }

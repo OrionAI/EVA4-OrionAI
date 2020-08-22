@@ -51,7 +51,7 @@ export const recognizeFace = ({
     if (response.data.result !== 'success') {
       dispatch({
         type: SUBMIT_FORM,
-        payload: { name: formName, data: response.data.data },
+        payload: { name: formName, data: response.data },
       });
     } else {
       let responseURI = dataURLtoFile(
@@ -65,7 +65,7 @@ export const recognizeFace = ({
       response = await api.post(recognizeURL, data);
       dispatch({
         type: SUBMIT_FORM,
-        payload: { name: formName, data: response.data.data },
+        payload: { name: formName, data: response.data },
       });
     }
   } catch (error) {
