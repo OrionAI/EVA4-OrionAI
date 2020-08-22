@@ -60,7 +60,6 @@ class Form extends React.Component {
 const validate = formValues => {
   const errors = {};
 
-  // console.log(formValues);
   if (!formValues.image) {
     errors.image = 'Please upload an image';
   }

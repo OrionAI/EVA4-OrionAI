@@ -31,7 +31,6 @@ class FaceRecognition extends React.Component {
 
   renderOutput() {
     if (this.props.modelForm.name === this.formName) {
-      console.log(this.props.modelForm.data);
       if (this.props.modelForm.data.result === 'success') {
         return (
           <div className="row mt-5">
