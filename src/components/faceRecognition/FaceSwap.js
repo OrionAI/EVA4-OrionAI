@@ -30,62 +30,128 @@ class FaceSwap extends React.Component {
     });
   };
 
+  renderOutputSmallDisplay() {
+    return (
+      <React.Fragment>
+        <div className="col-12 d-block d-md-none mx-auto">
+          <div className="row">
+            <div className="col-12 mb-2">
+              <h3 className="text-center">Inputs</h3>
+            </div>
+            <div className="col-12">
+              <div className="card">
+                <img
+                  src={this.state.sourceImageURL}
+                  className="card-img-top"
+                  alt="source"
+                />
+                <div className="card-body">
+                  <p className="card-text">Source Image</p>
+                </div>
+              </div>
+            </div>
+            <div className="col-12 mt-2">
+              <div className="card">
+                <img
+                  src={this.state.targetImageURL}
+                  className="card-img-top"
+                  alt="target"
+                />
+                <div className="card-body">
+                  <p className="card-text">Target Image</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="col-12 d-block d-md-none mx-auto">
+          <div className="row">
+            <div className="col-12 mt-5 mb-2">
+              <h3 className="text-center">Outputs</h3>
+            </div>
+          </div>
+          <div className="col-12">
+            <div className="card">
+              <img
+                src={`data:image/jpeg;base64,${this.props.modelForm.data.data}`}
+                className="card-img-top"
+                alt="swap"
+              />
+              <div className="card-body">
+                <p className="card-text">Swapped Image</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </React.Fragment>
+    );
+  }
+
+  renderOutputLargeDisplay() {
+    return (
+      <React.Fragment>
+        <div className="col-7 d-none d-md-block ml-auto">
+          <div className="row">
+            <div className="col-12 mb-4">
+              <h3 className="text-center">Inputs</h3>
+            </div>
+            <div className="col-6">
+              <div className="card">
+                <img
+                  src={this.state.sourceImageURL}
+                  className="card-img-top"
+                  alt="source"
+                />
+                <div className="card-body">
+                  <p className="card-text">Source Image</p>
+                </div>
+              </div>
+            </div>
+            <div className="col-6">
+              <div className="card">
+                <img
+                  src={this.state.targetImageURL}
+                  className="card-img-top"
+                  alt="target"
+                />
+                <div className="card-body">
+                  <p className="card-text">Target Image</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="col-1 d-none d-md-block" />
+        <div className="col-4 d-none d-md-block mr-auto">
+          <div className="row">
+            <div className="col-12 mb-4">
+              <h3 className="text-center">Outputs</h3>
+            </div>
+          </div>
+          <div className="col-12">
+            <div className="card">
+              <img
+                src={`data:image/jpeg;base64,${this.props.modelForm.data.data}`}
+                className="card-img-top"
+                alt="swap"
+              />
+              <div className="card-body">
+                <p className="card-text">Swapped Image</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </React.Fragment>
+    );
+  }
+
   renderOutput() {
     if (this.props.modelForm.name === this.formName) {
       if (this.props.modelForm.data.result === 'success') {
         return (
           <div className="row mt-5">
-            <div className="col-7 ml-auto">
-              <div className="row">
-                <div className="col-12 mb-4">
-                  <h3 className="text-center">Inputs</h3>
-                </div>
-                <div className="col-6">
-                  <div className="card">
-                    <img
-                      src={this.state.sourceImageURL}
-                      className="card-img-top"
-                      alt="source"
-                    />
-                    <div className="card-body">
-                      <p className="card-text">Source Image</p>
-                    </div>
-                  </div>
-                </div>
-                <div className="col-6">
-                  <div className="card">
-                    <img
-                      src={this.state.targetImageURL}
-                      className="card-img-top"
-                      alt="target"
-                    />
-                    <div className="card-body">
-                      <p className="card-text">Target Image</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="col-1" />
-            <div className="col-4 mr-auto">
-              <div className="row">
-                <div className="col-12 mb-4">
-                  <h3 className="text-center">Outputs</h3>
-                </div>
-              </div>
-              <div className="col-12">
-                <div className="card">
-                  <img
-                    src={`data:image/jpeg;base64,${this.props.modelForm.data.data}`}
-                    className="card-img-top"
-                    alt="swap"
-                  />
-                  <div className="card-body">
-                    <p className="card-text">Swapped Image</p>
-                  </div>
-                </div>
-              </div>
-            </div>
+            {this.renderOutputSmallDisplay()}
+            {this.renderOutputLargeDisplay()}
           </div>
         );
       } else {

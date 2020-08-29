@@ -31,7 +31,7 @@ class FaceAlignment extends React.Component {
       if (this.props.modelForm.data.result === 'success') {
         return (
           <div className="row mt-5">
-            <div className="col-6 ml-auto">
+            <div className="col-12 col-md-6 mt-4 ml-auto">
               <div className="card" style={{ width: '20rem' }}>
                 <img
                   src={this.state.imageURL}
@@ -43,7 +43,7 @@ class FaceAlignment extends React.Component {
                 </div>
               </div>
             </div>
-            <div className="col-6 mr-auto">
+            <div className="col-12 col-md-6 mt-4 mr-auto">
               <div className="card" style={{ width: '20rem' }}>
                 <img
                   src={`data:image/jpeg;base64,${this.props.modelForm.data.data}`}

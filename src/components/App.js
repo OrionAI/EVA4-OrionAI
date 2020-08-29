@@ -9,6 +9,7 @@ import MobileNetV2 from './classification/MobileNetV2';
 import FaceAlignment from './faceRecognition/FaceAlignment';
 import FaceSwap from './faceRecognition/FaceSwap';
 import FaceRecognition from './faceRecognition/FaceRecognition';
+import HumanPoseEstimation from './poseEstimation/HumanPoseEstimation';
 import Footer from './Footer';
 
 import '../styles/App.css';
@@ -23,6 +24,7 @@ class App extends React.Component {
       '/align': 'facealignment',
       '/swap': 'faceswap',
       '/recognize': 'facerecognition',
+      '/pose': 'humanposeestimation',
     };
   }
 
@@ -40,6 +42,7 @@ class App extends React.Component {
                 <Route path="/align" exact component={FaceAlignment} />
                 <Route path="/swap" exact component={FaceSwap} />
                 <Route path="/recognize" exact component={FaceRecognition} />
+                <Route path="/pose" exact component={HumanPoseEstimation} />
               </Switch>
             </div>
           </Router>

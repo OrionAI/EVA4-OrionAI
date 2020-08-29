@@ -29,27 +29,58 @@ class FaceRecognition extends React.Component {
     this.setState({ imageURL: imgURL.image });
   };
 
+  renderOutputSmallDisplay() {
+    return (
+      <React.Fragment>
+        <div className="col-12 d-block d-md-none mx-auto text-center">
+          <h3 className="text-center mb-2">Input Image</h3>
+          <img
+            src={this.state.imageURL}
+            className="card-img-top"
+            alt="input"
+            style={{ width: '20rem' }}
+          />
+        </div>
+        <div className="col-12 d-block d-md-none mx-auto text-center">
+          <h3 className="text-center mt-5 mb-2">Prediction</h3>
+          <h4 style={{ marginTop: '1rem' }}>
+            {this.props.modelForm.data.data['predicted_name']}
+          </h4>
+        </div>
+      </React.Fragment>
+    );
+  }
+
+  renderOutputLargeDisplay() {
+    return (
+      <React.Fragment>
+        <div className="col-7 d-none d-md-block ml-auto text-center">
+          <h3 className="text-center mb-5">Input Image</h3>
+          <img
+            src={this.state.imageURL}
+            className="card-img-top"
+            alt="input"
+            style={{ width: '30rem' }}
+          />
+        </div>
+        <div className="col-1" />
+        <div className="col-4 d-none d-md-block mr-auto text-center">
+          <h3 className="text-center mb-5">Prediction</h3>
+          <h2 style={{ marginTop: '10rem' }}>
+            {this.props.modelForm.data.data['predicted_name']}
+          </h2>
+        </div>
+      </React.Fragment>
+    );
+  }
+
   renderOutput() {
     if (this.props.modelForm.name === this.formName) {
       if (this.props.modelForm.data.result === 'success') {
         return (
           <div className="row mt-5">
-            <div className="col-7 ml-auto text-center">
-              <h3 className="text-center mb-5">Input Image</h3>
-              <img
-                src={this.state.imageURL}
-                className="card-img-top"
-                alt="input"
-                style={{ width: '30rem' }}
-              />
-            </div>
-            <div className="col-1" />
-            <div className="col-4 mr-auto text-center">
-              <h3 className="text-center mb-5">Prediction</h3>
-              <h2 style={{ marginTop: '10rem' }}>
-                {this.props.modelForm.data.data['predicted_name']}
-              </h2>
-            </div>
+            {this.renderOutputSmallDisplay()}
+            {this.renderOutputLargeDisplay()}
           </div>
         );
       } else {
