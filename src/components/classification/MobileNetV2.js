@@ -30,8 +30,8 @@ class MobileNetV2 extends React.Component {
     if (this.props.modelForm.name === this.formName) {
       return (
         <div className="row mt-5">
-          <div className="col-6 mx-auto">
-            <div className="card" style={{ width: '20rem' }}>
+          <div className="col">
+            <div className="card mx-auto" style={{ width: '20rem' }}>
               <img
                 src={this.state.imageURL}
                 className="card-img-top"
