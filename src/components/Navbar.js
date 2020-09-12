@@ -164,6 +164,16 @@ class Navbar extends React.Component {
                   Pose Estimation
                 </Link>
               </li>
+              <li className="nav-item">
+                <Link
+                  to="/dcgan"
+                  className={`nav-link ${
+                    activeNavItem === 'dcgan' ? 'active' : ''
+                  }`}
+                >
+                  GAN
+                </Link>
+              </li>
             </ul>
           </div>
         </div>

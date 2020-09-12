@@ -36,6 +36,26 @@ export const submitForm = (url, formName, formValues) => async dispatch => {
   }
 };
 
+export const submitGetForm = (url, formName) => async dispatch => {
+  if (formName) {
+    dispatch(loadingForm(formName));
+  }
+
+  try {
+    const response = await api.get(url);
+    dispatch({
+      type: SUBMIT_FORM,
+      payload: { name: formName, data: response.data },
+    });
+  } catch (error) {
+    console.log(error);
+  }
+
+  if (formName) {
+    dispatch(clearLoadingForm(formName));
+  }
+};
+
 export const recognizeFace = ({
   alignURL,
   recognizeURL,
