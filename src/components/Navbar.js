@@ -174,6 +174,16 @@ class Navbar extends React.Component {
                   GAN
                 </Link>
               </li>
+              <li className="nav-item">
+                <Link
+                  to="/vae"
+                  className={`nav-link ${
+                    activeNavItem === 'vae' ? 'active' : ''
+                  }`}
+                >
+                  VAE
+                </Link>
+              </li>
             </ul>
           </div>
         </div>

@@ -22,6 +22,14 @@ class Form extends React.Component {
   };
 
   render() {
+    let buttonText = {
+      originalText: 'Predict',
+      loadingText: 'Predicting...',
+    };
+    console.log(this.props);
+    if (this.props.buttonText) {
+      buttonText = this.props.buttonText;
+    }
     return (
       <form onSubmit={this.props.handleSubmit(this.onSubmit)}>
         {_.map(this.props.fields, item => {
@@ -40,9 +48,8 @@ class Form extends React.Component {
           <div className="col mx-auto">
             {renderSubmitButton({
               loading: this.props.loadingForm.includes(this.props.form),
-              originalText: 'Predict',
-              loadingText: 'Predicting...',
               ref: this.submitButtonRef,
+              ...buttonText,
             })}
           </div>
           <div className="col-12">

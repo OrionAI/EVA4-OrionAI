@@ -11,6 +11,7 @@ import FaceSwap from './faceRecognition/FaceSwap';
 import FaceRecognition from './faceRecognition/FaceRecognition';
 import HumanPoseEstimation from './poseEstimation/HumanPoseEstimation';
 import DcGan from './generativeModels/DcGan';
+import Vae from './autoencoders/Vae';
 import Footer from './Footer';
 
 import '../styles/App.css';
@@ -27,6 +28,7 @@ class App extends React.Component {
       '/recognize': 'facerecognition',
       '/pose': 'humanposeestimation',
       '/dcgan': 'dcgan',
+      '/vae': 'vae',
     };
   }
 
@@ -46,6 +48,7 @@ class App extends React.Component {
                 <Route path="/recognize" exact component={FaceRecognition} />
                 <Route path="/pose" exact component={HumanPoseEstimation} />
                 <Route path="/dcgan" exact component={DcGan} />
+                <Route path="/vae" exact component={Vae} />
               </Switch>
             </div>
           </Router>
