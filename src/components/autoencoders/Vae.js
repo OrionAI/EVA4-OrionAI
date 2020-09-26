@@ -73,7 +73,7 @@ class Vae extends React.Component {
           <div className="col-6 mx-auto">
             <p align="justify">
               This is a small VAE which can reconstruct left facing Indian car
-              images.
+              images with a white background.
             </p>
           </div>
         </div>
@@ -87,7 +87,8 @@ class Vae extends React.Component {
                 {
                   name: 'image',
                   contentType: 'image',
-                  label: 'Upload Left Facing Indian Car Image',
+                  label:
+                    'Upload Left Facing Indian Car Image with white background',
                 },
               ]}
               buttonText={{
