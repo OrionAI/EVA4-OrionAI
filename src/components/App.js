@@ -9,9 +9,10 @@ import MobileNetV2 from './classification/MobileNetV2';
 import FaceAlignment from './faceRecognition/FaceAlignment';
 import FaceSwap from './faceRecognition/FaceSwap';
 import FaceRecognition from './faceRecognition/FaceRecognition';
-import HumanPoseEstimation from './poseEstimation/HumanPoseEstimation';
-import DcGan from './generativeModels/DcGan';
-import Vae from './autoencoders/Vae';
+import HumanPoseEstimation from './miscellaneous/HumanPoseEstimation';
+import DcGan from './miscellaneous/DcGan';
+import Vae from './miscellaneous/Vae';
+import StyleTransfer from './miscellaneous/StyleTransfer';
 import Footer from './Footer';
 
 import '../styles/App.css';
@@ -29,6 +30,7 @@ class App extends React.Component {
       '/pose': 'humanposeestimation',
       '/dcgan': 'dcgan',
       '/vae': 'vae',
+      '/style': 'styletransfer',
     };
   }
 
@@ -49,6 +51,7 @@ class App extends React.Component {
                 <Route path="/pose" exact component={HumanPoseEstimation} />
                 <Route path="/dcgan" exact component={DcGan} />
                 <Route path="/vae" exact component={Vae} />
+                <Route path="/style" exact component={StyleTransfer} />
               </Switch>
             </div>
           </Router>

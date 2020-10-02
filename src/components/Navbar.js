@@ -154,35 +154,65 @@ class Navbar extends React.Component {
                   </Link>
                 </div>
               </li>
-              <li className="nav-item">
+
+              <li className="nav-item dropdown">
                 <Link
-                  to="/pose"
-                  className={`nav-link ${
-                    activeNavItem === 'humanposeestimation' ? 'active' : ''
+                  className={`nav-link dropdown-toggle ${
+                    [
+                      'humanposeestimation',
+                      'dcgan',
+                      'vae',
+                      'styletransfer',
+                    ].includes(activeNavItem)
+                      ? 'active'
+                      : ''
                   }`}
+                  to="#"
+                  id="miscellaneous-dropdown"
+                  role="button"
+                  data-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
                 >
-                  Pose Estimation
+                  Miscellaneous
                 </Link>
-              </li>
-              <li className="nav-item">
-                <Link
-                  to="/dcgan"
-                  className={`nav-link ${
-                    activeNavItem === 'dcgan' ? 'active' : ''
-                  }`}
+                <div
+                  className="dropdown-menu"
+                  aria-labelledby="miscellaneous-dropdown"
                 >
-                  GAN
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link
-                  to="/vae"
-                  className={`nav-link ${
-                    activeNavItem === 'vae' ? 'active' : ''
-                  }`}
-                >
-                  VAE
-                </Link>
+                  <Link
+                    to="/pose"
+                    className={`dropdown-item ${
+                      activeNavItem === 'humanposeestimation' ? 'active' : ''
+                    }`}
+                  >
+                    Pose Estimation
+                  </Link>
+                  <Link
+                    to="/dcgan"
+                    className={`dropdown-item ${
+                      activeNavItem === 'dcgan' ? 'active' : ''
+                    }`}
+                  >
+                    GAN
+                  </Link>
+                  <Link
+                    to="/vae"
+                    className={`dropdown-item ${
+                      activeNavItem === 'vae' ? 'active' : ''
+                    }`}
+                  >
+                    VAE
+                  </Link>
+                  <Link
+                    to="/style"
+                    className={`dropdown-item ${
+                      activeNavItem === 'styletransfer' ? 'active' : ''
+                    }`}
+                  >
+                    Neural Style Transfer
+                  </Link>
+                </div>
               </li>
             </ul>
           </div>
