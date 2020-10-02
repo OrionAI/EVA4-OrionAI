@@ -32,12 +32,47 @@ export const renderImageField = ({
   );
 };
 
+export const renderDropdownField = ({
+  input,
+  label,
+  required,
+  formGroupClassName,
+  options,
+  meta,
+}) => {
+  const errorClassName = `${
+    required && meta.touched && meta.error ? 'is-invalid' : ''
+  }`;
+  return (
+    <div className={`form-group ${formGroupClassName}`}>
+      <label>{label}</label>
+      <div className={`input-group ${errorClassName}`}>
+        <select {...input} className="form-control custom-select">
+          <option value="">Choose...</option>
+          {_.map(options, (value, key) => {
+            if (key !== '') {
+              return (
+                <option key={key} value={key}>
+                  {value[0]}
+                </option>
+              );
+            }
+            return '';
+          })}
+        </select>
+      </div>
+      {renderError(meta)}
+    </div>
+  );
+};
+
 export const renderFormField = ({
   input,
   contentType,
   label,
   required,
   formGroupClassName,
+  options,
   meta,
 }) => {
   if (contentType === 'image') {
@@ -48,7 +83,17 @@ export const renderFormField = ({
       formGroupClassName,
       meta,
     });
+  } else if (contentType === 'dropdown') {
+    return renderDropdownField({
+      input,
+      label,
+      required,
+      formGroupClassName,
+      options,
+      meta,
+    });
   }
+  return '';
 };
 
 export const renderSubmitButton = ({

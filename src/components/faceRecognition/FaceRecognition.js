@@ -16,7 +16,7 @@ class FaceRecognition extends React.Component {
     this.submitButtonRef = React.createRef();
   }
 
-  onSubmit = (data, imgURL) => {
+  onSubmit = ({ data, imgURL }) => {
     this.props.recognizeFace({
       alignURL:
         'https://tq1mihfdxd.execute-api.ap-south-1.amazonaws.com/dev/align',

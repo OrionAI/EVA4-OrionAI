@@ -16,7 +16,7 @@ class HumanPoseEstimation extends React.Component {
     this.submitButtonRef = React.createRef();
   }
 
-  onSubmit = (data, imgURL) => {
+  onSubmit = ({ data, imgURL }) => {
     this.props.submitForm(
       'https://wrad2oqme9.execute-api.ap-south-1.amazonaws.com/dev/pose',
       this.formName,

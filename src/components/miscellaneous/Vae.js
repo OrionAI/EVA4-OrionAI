@@ -16,7 +16,7 @@ class Vae extends React.Component {
     this.submitButtonRef = React.createRef();
   }
 
-  onSubmit = (data, imgURL) => {
+  onSubmit = ({ data, imgURL }) => {
     this.props.submitForm(
       'https://zxpgsttdeh.execute-api.ap-south-1.amazonaws.com/dev/vae',
       this.formName,

@@ -14,11 +14,17 @@ class Form extends React.Component {
   onSubmit = formValues => {
     const data = new FormData();
     let imgURL = {};
+    let otherData = {};
     for (let i in formValues) {
-      data.append(i, formValues[i][0]);
-      imgURL[i] = URL.createObjectURL(formValues[i][0]);
+      if (typeof formValues[i] === 'object') {
+        data.append(i, formValues[i][0]);
+        imgURL[i] = URL.createObjectURL(formValues[i][0]);
+      } else {
+        data.append(i, formValues[i]);
+        otherData[i] = formValues[i];
+      }
     }
-    this.props.onSubmit(data, imgURL);
+    this.props.onSubmit({ data, imgURL, otherData });
   };
 
   render() {
@@ -26,7 +32,6 @@ class Form extends React.Component {
       originalText: 'Predict',
       loadingText: 'Predicting...',
     };
-    console.log(this.props);
     if (this.props.buttonText) {
       buttonText = this.props.buttonText;
     }
@@ -40,6 +45,7 @@ class Form extends React.Component {
               component={renderFormField}
               contentType={item.contentType}
               label={item.label}
+              options={item.options}
               required
             />
           );

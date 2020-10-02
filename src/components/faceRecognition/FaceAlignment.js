@@ -16,7 +16,7 @@ class FaceAlignment extends React.Component {
     this.submitButtonRef = React.createRef();
   }
 
-  onSubmit = (data, imgURL) => {
+  onSubmit = ({ data, imgURL }) => {
     this.props.submitForm(
       'https://tq1mihfdxd.execute-api.ap-south-1.amazonaws.com/dev/align',
       this.formName,
