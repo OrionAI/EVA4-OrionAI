@@ -13,6 +13,7 @@ import HumanPoseEstimation from './miscellaneous/HumanPoseEstimation';
 import DcGan from './miscellaneous/DcGan';
 import Vae from './miscellaneous/Vae';
 import StyleTransfer from './miscellaneous/StyleTransfer';
+import SrGan from './miscellaneous/SrGan';
 import Footer from './Footer';
 
 import '../styles/App.css';
@@ -31,6 +32,7 @@ class App extends React.Component {
       '/dcgan': 'dcgan',
       '/vae': 'vae',
       '/style': 'styletransfer',
+      '/srgan': 'srgan',
     };
   }
 
@@ -52,6 +54,7 @@ class App extends React.Component {
                 <Route path="/dcgan" exact component={DcGan} />
                 <Route path="/vae" exact component={Vae} />
                 <Route path="/style" exact component={StyleTransfer} />
+                <Route path="/srgan" exact component={SrGan} />
               </Switch>
             </div>
           </Router>

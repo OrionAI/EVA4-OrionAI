@@ -212,6 +212,14 @@ class Navbar extends React.Component {
                   >
                     Neural Style Transfer
                   </Link>
+                  <Link
+                    to="/srgan"
+                    className={`dropdown-item ${
+                      activeNavItem === 'srgan' ? 'active' : ''
+                    }`}
+                  >
+                    SRGAN
+                  </Link>
                 </div>
               </li>
             </ul>

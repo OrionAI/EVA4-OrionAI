@@ -146,6 +146,18 @@ class Home extends React.Component {
             </Link>
           </div>
         </div>
+        <div className="row mt-4">
+          <div className="col-12 text-center mt-5 mb-3">
+            <h3>Super Resolution GAN</h3>
+          </div>
+          <div className="col-6 text-center mx-auto">
+            <Link to="/srgan">
+              <button type="button" className="btn border border-secondary">
+                SRGAN
+              </button>
+            </Link>
+          </div>
+        </div>
       </React.Fragment>
     );
   }
