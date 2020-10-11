@@ -93,7 +93,13 @@ class App extends React.Component {
             <Navbar componentItems={this.componentItems} />
             <div className="container">
               <Switch>
-                <Route path="/" exact component={Home} />
+                <Route
+                  path="/"
+                  exact
+                  component={() => (
+                    <Home componentItems={this.componentItems} />
+                  )}
+                />
                 <Route path="/resnet34" exact component={ResNet34} />
                 <Route path="/mobilenetv2" exact component={MobileNetV2} />
                 <Route path="/facealignment" exact component={FaceAlignment} />

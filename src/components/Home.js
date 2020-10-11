@@ -3,58 +3,16 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 class Home extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.cardItems = [
-      {
-        title: 'Pose Estimation Models',
-        link: 'pose',
-        buttonText: 'HumanPoseEstimation',
-      },
-      {
-        title: 'Generative Models',
-        link: 'dcgan',
-        buttonText: 'DCGAN',
-      },
-      {
-        title: 'AutoEncoders',
-        link: 'vae',
-        buttonText: 'VAE',
-      },
-      {
-        title: 'Style Transfer',
-        link: 'style',
-        buttonText: 'Neural Style Transfer',
-      },
-      {
-        title: 'Super Resolution GAN',
-        link: 'srgan',
-        buttonText: 'SRGAN',
-      },
-    ];
-  }
   renderFaceRecognitionLinks() {
-    return (
-      <React.Fragment>
-        {/* For small screens */}
-        <Link to="/align">
-          <button type="button" className="btn border border-secondary">
-            Face Alignment
+    return _.map(this.props.componentItems.faceRecognition.items, item => {
+      return (
+        <Link to={`/${item.link}`} key={item.link}>
+          <button type="button" className="btn border border-secondary mr-2">
+            {item.title}
           </button>
         </Link>
-        <Link to="/swap">
-          <button type="button" className="btn border border-secondary mx-2">
-            Face Swap
-          </button>
-        </Link>
-        <Link to="/recognize">
-          <button type="button" className="btn border border-secondary">
-            Face Recognition
-          </button>
-        </Link>
-      </React.Fragment>
-    );
+      );
+    });
   }
 
   render() {
@@ -83,22 +41,21 @@ class Home extends React.Component {
               <div className="card-body text-center">
                 <h3 className="card-title">Classification Models</h3>
                 <div className="card-text">
-                  <Link to="/resnet34">
-                    <button
-                      type="button"
-                      className="btn border border-secondary mr-3"
-                    >
-                      ResNet34
-                    </button>
-                  </Link>
-                  <Link to="/mobilenetv2">
-                    <button
-                      type="button"
-                      className="btn border border-secondary"
-                    >
-                      MobileNet V2
-                    </button>
-                  </Link>
+                  {_.map(
+                    this.props.componentItems.classification.items,
+                    item => {
+                      return (
+                        <Link to={`/${item.link}`} key={item.link}>
+                          <button
+                            type="button"
+                            className="btn border border-secondary mx-2"
+                          >
+                            {item.title}
+                          </button>
+                        </Link>
+                      );
+                    }
+                  )}
                 </div>
               </div>
             </div>
@@ -115,30 +72,35 @@ class Home extends React.Component {
           </div>
         </div>
         <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3">
-          {_.map(this.cardItems, cardItem => {
-            return (
-              <div className="col mb-5">
-                <div className="card shadow p-3 bg-white rounded">
-                  {/* <div className="card-header">
-                    <h4>{cardItem.title}</h4>
-                  </div> */}
-                  <div className="card-body text-center">
-                    <h3 className="card-title">{cardItem.title}</h3>
-                    <div className="card-text">
-                      <Link to={`/${cardItem.link}`}>
-                        <button
-                          type="button"
-                          className="btn border border-secondary"
-                        >
-                          {cardItem.buttonText}
-                        </button>
-                      </Link>
+          {_.map(
+            _.omit(
+              _.omit(this.props.componentItems, 'classification'),
+              'faceRecognition'
+            ),
+            componentItem => {
+              return _.map(componentItem.items, item => {
+                return (
+                  <div className="col mb-5" key={item.link}>
+                    <div className="card shadow p-3 bg-white rounded">
+                      <div className="card-body text-center">
+                        <h3 className="card-title">{item.title}</h3>
+                        <div className="card-text">
+                          <Link to={`/${item.link}`}>
+                            <button
+                              type="button"
+                              className="btn border border-secondary"
+                            >
+                              {item.buttonText}
+                            </button>
+                          </Link>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </div>
-            );
-          })}
+                );
+              });
+            }
+          )}
         </div>
       </React.Fragment>
     );
