@@ -66,6 +66,27 @@ export const renderDropdownField = ({
   );
 };
 
+export const renderTextField = ({
+  input,
+  label,
+  required,
+  formGroupClassName,
+  meta,
+}) => {
+  const errorClassName = `${
+    required && meta.touched && meta.error ? 'is-invalid' : ''
+  }`;
+  return (
+    <div className={`form-group ${formGroupClassName}`}>
+      <label>{label}</label>
+      <div className={`input-group ${errorClassName}`}>
+        <input {...input} type="text" className="form-control" />
+      </div>
+      {renderError(meta)}
+    </div>
+  );
+};
+
 export const renderFormField = ({
   input,
   contentType,
@@ -90,6 +111,14 @@ export const renderFormField = ({
       required,
       formGroupClassName,
       options,
+      meta,
+    });
+  } else if (contentType === 'text') {
+    return renderTextField({
+      input,
+      label,
+      required,
+      formGroupClassName,
       meta,
     });
   }
