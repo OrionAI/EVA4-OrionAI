@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
 
@@ -17,9 +18,7 @@ class Navbar extends React.Component {
   };
 
   render() {
-    const activeNavItem = this.props.componentPath[
-      this.props.history.location.pathname
-    ];
+    const activeNavItem = this.props.history.location.pathname.substring(1);
     return (
       <nav
         className="navbar navbar-expand-lg navbar-dark"
@@ -68,160 +67,51 @@ class Navbar extends React.Component {
                   Home
                 </Link>
               </li>
-              <li className="nav-item dropdown">
-                <Link
-                  className={`nav-link dropdown-toggle ${
-                    ['resnet34', 'mobilenetv2'].includes(activeNavItem)
-                      ? 'active'
-                      : ''
-                  }`}
-                  to="#"
-                  id="classification-dropdown"
-                  role="button"
-                  data-toggle="dropdown"
-                  aria-haspopup="true"
-                  aria-expanded="false"
-                >
-                  Classification
-                </Link>
-                <div
-                  className="dropdown-menu"
-                  aria-labelledby="classification-dropdown"
-                >
-                  <Link
-                    to="/resnet34"
-                    className={`dropdown-item ${
-                      activeNavItem === 'resnet34' ? 'active' : ''
-                    }`}
-                  >
-                    ResNet34
-                  </Link>
-                  <Link
-                    to="/mobilenetv2"
-                    className={`dropdown-item ${
-                      activeNavItem === 'mobilenetv2' ? 'active' : ''
-                    }`}
-                  >
-                    MobileNetV2
-                  </Link>
-                </div>
-              </li>
-              <li className="nav-item dropdown">
-                <Link
-                  className={`nav-link dropdown-toggle ${
-                    ['facealignment', 'faceswap', 'facerecognition'].includes(
-                      activeNavItem
-                    )
-                      ? 'active'
-                      : ''
-                  }`}
-                  to="#"
-                  id="face-recognition-dropdown"
-                  role="button"
-                  data-toggle="dropdown"
-                  aria-haspopup="true"
-                  aria-expanded="false"
-                >
-                  Face Recognition
-                </Link>
-                <div
-                  className="dropdown-menu"
-                  aria-labelledby="face-recognition-dropdown"
-                >
-                  <Link
-                    to="/align"
-                    className={`dropdown-item ${
-                      activeNavItem === 'facealignment' ? 'active' : ''
-                    }`}
-                  >
-                    Face Alignment
-                  </Link>
-                  <Link
-                    to="/swap"
-                    className={`dropdown-item ${
-                      activeNavItem === 'faceswap' ? 'active' : ''
-                    }`}
-                  >
-                    Face Swap
-                  </Link>
-                  <Link
-                    to="/recognize"
-                    className={`dropdown-item ${
-                      activeNavItem === 'facerecognition' ? 'active' : ''
-                    }`}
-                  >
-                    Face Recognition
-                  </Link>
-                </div>
-              </li>
-
-              <li className="nav-item dropdown">
-                <Link
-                  className={`nav-link dropdown-toggle ${
-                    [
-                      'humanposeestimation',
-                      'dcgan',
-                      'vae',
-                      'styletransfer',
-                    ].includes(activeNavItem)
-                      ? 'active'
-                      : ''
-                  }`}
-                  to="#"
-                  id="miscellaneous-dropdown"
-                  role="button"
-                  data-toggle="dropdown"
-                  aria-haspopup="true"
-                  aria-expanded="false"
-                >
-                  Miscellaneous
-                </Link>
-                <div
-                  className="dropdown-menu"
-                  aria-labelledby="miscellaneous-dropdown"
-                >
-                  <Link
-                    to="/pose"
-                    className={`dropdown-item ${
-                      activeNavItem === 'humanposeestimation' ? 'active' : ''
-                    }`}
-                  >
-                    Pose Estimation
-                  </Link>
-                  <Link
-                    to="/dcgan"
-                    className={`dropdown-item ${
-                      activeNavItem === 'dcgan' ? 'active' : ''
-                    }`}
-                  >
-                    GAN
-                  </Link>
-                  <Link
-                    to="/vae"
-                    className={`dropdown-item ${
-                      activeNavItem === 'vae' ? 'active' : ''
-                    }`}
-                  >
-                    VAE
-                  </Link>
-                  <Link
-                    to="/style"
-                    className={`dropdown-item ${
-                      activeNavItem === 'styletransfer' ? 'active' : ''
-                    }`}
-                  >
-                    Neural Style Transfer
-                  </Link>
-                  <Link
-                    to="/srgan"
-                    className={`dropdown-item ${
-                      activeNavItem === 'srgan' ? 'active' : ''
-                    }`}
-                  >
-                    SRGAN
-                  </Link>
-                </div>
-              </li>
+              {_.map(
+                this.props.componentItems,
+                (componentItem, componentItemName) => {
+                  return (
+                    <li className="nav-item dropdown" key={componentItemName}>
+                      <Link
+                        className={`nav-link dropdown-toggle ${
+                          _.map(
+                            componentItem.items,
+                            item => item.link
+                          ).includes(activeNavItem)
+                            ? 'active'
+                            : ''
+                        }`}
+                        to="#"
+                        id={`${componentItemName}-dropdown`}
+                        role="button"
+                        data-toggle="dropdown"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                      >
+                        {componentItem.title}
+                      </Link>
+                      <div
+                        className="dropdown-menu"
+                        aria-labelledby={`${componentItemName}-dropdown`}
+                      >
+                        {_.map(componentItem.items, item => {
+                          return (
+                            <Link
+                              to={`/${item.link}`}
+                              className={`dropdown-item ${
+                                activeNavItem === `${item.link}` ? 'active' : ''
+                              }`}
+                              key={item.link}
+                            >
+                              {item.title}
+                            </Link>
+                          );
+                        })}
+                      </div>
+                    </li>
+                  );
+                }
+              )}
             </ul>
           </div>
         </div>

@@ -21,18 +21,67 @@ import '../styles/App.css';
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.componentPath = {
-      '/': 'home',
-      '/mobilenetv2': 'mobilenetv2',
-      '/resnet34': 'resnet34',
-      '/align': 'facealignment',
-      '/swap': 'faceswap',
-      '/recognize': 'facerecognition',
-      '/pose': 'humanposeestimation',
-      '/dcgan': 'dcgan',
-      '/vae': 'vae',
-      '/style': 'styletransfer',
-      '/srgan': 'srgan',
+    this.componentItems = {
+      classification: {
+        title: 'Classification',
+        items: [
+          {
+            title: 'ResNet34',
+            link: 'resnet34',
+          },
+          {
+            title: 'MobileNet V2',
+            link: 'mobilenetv2',
+          },
+        ],
+      },
+      faceRecognition: {
+        title: 'Face Recognition',
+        items: [
+          {
+            title: 'Face Alignment',
+            link: 'facealignment',
+          },
+          {
+            title: 'Face Swap',
+            link: 'faceswap',
+          },
+          {
+            title: 'Face Recognition',
+            link: 'facerecognition',
+          },
+        ],
+      },
+      miscellaneous: {
+        title: 'Miscellaneous',
+        items: [
+          {
+            title: 'Pose Estimation Models',
+            link: 'humanposeestimation',
+            buttonText: 'HumanPoseEstimation',
+          },
+          {
+            title: 'Generative Models',
+            link: 'dcgan',
+            buttonText: 'DCGAN',
+          },
+          {
+            title: 'AutoEncoders',
+            link: 'vae',
+            buttonText: 'VAE',
+          },
+          {
+            title: 'Style Transfer',
+            link: 'styletransfer',
+            buttonText: 'Neural Style Transfer',
+          },
+          {
+            title: 'Super Resolution GAN',
+            link: 'srgan',
+            buttonText: 'SRGAN',
+          },
+        ],
+      },
     };
   }
 
@@ -41,19 +90,27 @@ class App extends React.Component {
       <div className="page-container">
         <div className="content-wrap">
           <Router history={history}>
-            <Navbar componentPath={this.componentPath} />
+            <Navbar componentItems={this.componentItems} />
             <div className="container">
               <Switch>
                 <Route path="/" exact component={Home} />
                 <Route path="/resnet34" exact component={ResNet34} />
                 <Route path="/mobilenetv2" exact component={MobileNetV2} />
-                <Route path="/align" exact component={FaceAlignment} />
-                <Route path="/swap" exact component={FaceSwap} />
-                <Route path="/recognize" exact component={FaceRecognition} />
-                <Route path="/pose" exact component={HumanPoseEstimation} />
+                <Route path="/facealignment" exact component={FaceAlignment} />
+                <Route path="/faceswap" exact component={FaceSwap} />
+                <Route
+                  path="/facerecognition"
+                  exact
+                  component={FaceRecognition}
+                />
+                <Route
+                  path="/humanposeestimation"
+                  exact
+                  component={HumanPoseEstimation}
+                />
                 <Route path="/dcgan" exact component={DcGan} />
                 <Route path="/vae" exact component={Vae} />
-                <Route path="/style" exact component={StyleTransfer} />
+                <Route path="/styletransfer" exact component={StyleTransfer} />
                 <Route path="/srgan" exact component={SrGan} />
               </Switch>
             </div>
