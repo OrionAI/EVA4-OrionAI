@@ -1,54 +1,58 @@
+import _ from 'lodash';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
 class Home extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.cardItems = [
+      {
+        title: 'Pose Estimation Models',
+        link: 'pose',
+        buttonText: 'HumanPoseEstimation',
+      },
+      {
+        title: 'Generative Models',
+        link: 'dcgan',
+        buttonText: 'DCGAN',
+      },
+      {
+        title: 'AutoEncoders',
+        link: 'vae',
+        buttonText: 'VAE',
+      },
+      {
+        title: 'Style Transfer',
+        link: 'style',
+        buttonText: 'Neural Style Transfer',
+      },
+      {
+        title: 'Super Resolution GAN',
+        link: 'srgan',
+        buttonText: 'SRGAN',
+      },
+    ];
+  }
   renderFaceRecognitionLinks() {
     return (
       <React.Fragment>
         {/* For small screens */}
-        <div className="col-12 d-block d-md-none mx-auto text-center">
-          <Link to="/align">
-            <button type="button" className="btn border border-secondary">
-              Face Alignment
-            </button>
-          </Link>
-        </div>
-        <div className="col-12 d-block d-md-none mx-auto my-3 text-center">
-          <Link to="/swap">
-            <button type="button" className="btn border border-secondary">
-              Face Swap
-            </button>
-          </Link>
-        </div>
-        <div className="col-12 d-block d-md-none mx-auto text-center">
-          <Link to="/recognize">
-            <button type="button" className="btn border border-secondary">
-              Face Recognition
-            </button>
-          </Link>
-        </div>
-        {/* For Large Screens */}
-        <div className="col-3 d-none d-md-block ml-auto text-right">
-          <Link to="/align">
-            <button type="button" className="btn border border-secondary">
-              Face Alignment
-            </button>
-          </Link>
-        </div>
-        <div className="col-2 d-none d-md-block text-center">
-          <Link to="/swap">
-            <button type="button" className="btn border border-secondary">
-              Face Swap
-            </button>
-          </Link>
-        </div>
-        <div className="col-3 d-none d-md-block mr-auto text-left">
-          <Link to="/recognize">
-            <button type="button" className="btn border border-secondary">
-              Face Recognition
-            </button>
-          </Link>
-        </div>
+        <Link to="/align">
+          <button type="button" className="btn border border-secondary">
+            Face Alignment
+          </button>
+        </Link>
+        <Link to="/swap">
+          <button type="button" className="btn border border-secondary mx-2">
+            Face Swap
+          </button>
+        </Link>
+        <Link to="/recognize">
+          <button type="button" className="btn border border-secondary">
+            Face Recognition
+          </button>
+        </Link>
       </React.Fragment>
     );
   }
@@ -68,95 +72,73 @@ class Home extends React.Component {
             </h1>
           </div>
         </div>
-        <div className="row">
+        <div className="row mb-5">
           <div className="col-12 text-center">
             Please select a model below to continue
           </div>
         </div>
-        <div className="row mt-4">
-          <div className="col-12 text-center mt-5 mb-3">
-            <h3>Classification Models</h3>
+        <div className="row row-cols-1 row-cols-lg-2">
+          <div className="col mb-5">
+            <div className="card shadow p-3 bg-white rounded">
+              <div className="card-body text-center">
+                <h3 className="card-title">Classification Models</h3>
+                <div className="card-text">
+                  <Link to="/resnet34">
+                    <button
+                      type="button"
+                      className="btn border border-secondary mr-3"
+                    >
+                      ResNet34
+                    </button>
+                  </Link>
+                  <Link to="/mobilenetv2">
+                    <button
+                      type="button"
+                      className="btn border border-secondary"
+                    >
+                      MobileNet V2
+                    </button>
+                  </Link>
+                </div>
+              </div>
+            </div>
           </div>
-          <div className="col-6 text-right">
-            <Link to="/resnet34">
-              <button type="button" className="btn border border-secondary">
-                ResNet34
-              </button>
-            </Link>
-          </div>
-          <div className="col-6 text-left">
-            <Link to="/mobilenetv2">
-              <button type="button" className="btn border border-secondary">
-                MobileNet V2
-              </button>
-            </Link>
-          </div>
-        </div>
-        <div className="row mt-4">
-          <div className="col-12 text-center mt-5 mb-3">
-            <h3>Face Recognition Models</h3>
-          </div>
-          {this.renderFaceRecognitionLinks()}
-        </div>
-        <div className="row mt-4">
-          <div className="col-12 text-center mt-5 mb-3">
-            <h3>Pose Estimation Models</h3>
-          </div>
-          <div className="col-6 text-center mx-auto">
-            <Link to="/pose">
-              <button type="button" className="btn border border-secondary">
-                HumanPoseEstimation
-              </button>
-            </Link>
-          </div>
-        </div>
-        <div className="row mt-4">
-          <div className="col-12 text-center mt-5 mb-3">
-            <h3>Generative Models</h3>
-          </div>
-          <div className="col-6 text-center mx-auto">
-            <Link to="/dcgan">
-              <button type="button" className="btn border border-secondary">
-                DCGAN
-              </button>
-            </Link>
+          <div className="col mb-5">
+            <div className="card shadow p-3 bg-white rounded">
+              <div className="card-body text-center">
+                <h3 className="card-title">Face Recognition Models</h3>
+                <div className="card-text">
+                  {this.renderFaceRecognitionLinks()}
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-        <div className="row mt-4">
-          <div className="col-12 text-center mt-5 mb-3">
-            <h3>AutoEncoders</h3>
-          </div>
-          <div className="col-6 text-center mx-auto">
-            <Link to="/vae">
-              <button type="button" className="btn border border-secondary">
-                VAE
-              </button>
-            </Link>
-          </div>
-        </div>
-        <div className="row mt-4">
-          <div className="col-12 text-center mt-5 mb-3">
-            <h3>Neural Style Transfer</h3>
-          </div>
-          <div className="col-6 text-center mx-auto">
-            <Link to="/style">
-              <button type="button" className="btn border border-secondary">
-                Neural Style Transfer
-              </button>
-            </Link>
-          </div>
-        </div>
-        <div className="row mt-4">
-          <div className="col-12 text-center mt-5 mb-3">
-            <h3>Super Resolution GAN</h3>
-          </div>
-          <div className="col-6 text-center mx-auto">
-            <Link to="/srgan">
-              <button type="button" className="btn border border-secondary">
-                SRGAN
-              </button>
-            </Link>
-          </div>
+        <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3">
+          {_.map(this.cardItems, cardItem => {
+            return (
+              <div className="col mb-5">
+                <div className="card shadow p-3 bg-white rounded">
+                  {/* <div className="card-header">
+                    <h4>{cardItem.title}</h4>
+                  </div> */}
+                  <div className="card-body text-center">
+                    <h3 className="card-title">{cardItem.title}</h3>
+                    <div className="card-text">
+                      <Link to={`/${cardItem.link}`}>
+                        <button
+                          type="button"
+                          className="btn border border-secondary"
+                        >
+                          {cardItem.buttonText}
+                        </button>
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
         </div>
       </React.Fragment>
     );
