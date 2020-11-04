@@ -15,6 +15,7 @@ import Vae from './miscellaneous/Vae';
 import StyleTransfer from './miscellaneous/StyleTransfer';
 import SrGan from './miscellaneous/SrGan';
 import SentimentAnalysis from './nlp/SentimentAnalysis';
+import MachineTranslation from './nlp/MachineTranslation';
 import Footer from './Footer';
 
 import '../styles/App.css';
@@ -91,6 +92,11 @@ class App extends React.Component {
             link: 'sentimentanalysis',
             buttonText: 'Sentiment Analysis',
           },
+          {
+            title: 'Machine Translation',
+            link: 'machinetranslation',
+            buttonText: 'Machine Translation',
+          },
         ],
       },
     };
@@ -133,6 +139,11 @@ class App extends React.Component {
                   path="/sentimentanalysis"
                   exact
                   component={SentimentAnalysis}
+                />
+                <Route
+                  path="/machinetranslation"
+                  exact
+                  component={MachineTranslation}
                 />
               </Switch>
             </div>

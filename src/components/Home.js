@@ -70,12 +70,36 @@ class Home extends React.Component {
               </div>
             </div>
           </div>
+          <div className="col mb-5 mx-auto">
+            <div className="card shadow p-3 bg-white rounded">
+              <div className="card-body text-center">
+                <h3 className="card-title">NLP Models</h3>
+                <div className="card-text">
+                  {_.map(this.props.componentItems.nlp.items, item => {
+                    return (
+                      <Link to={`/${item.link}`} key={item.link}>
+                        <button
+                          type="button"
+                          className="btn border border-secondary mx-2"
+                        >
+                          {item.title}
+                        </button>
+                      </Link>
+                    );
+                  })}
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
         <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3">
           {_.map(
             _.omit(
-              _.omit(this.props.componentItems, 'classification'),
-              'faceRecognition'
+              _.omit(
+                _.omit(this.props.componentItems, 'classification'),
+                'faceRecognition'
+              ),
+              'nlp'
             ),
             componentItem => {
               return _.map(componentItem.items, item => {
