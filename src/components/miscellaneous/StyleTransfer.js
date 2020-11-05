@@ -188,7 +188,7 @@ class StyleTransfer extends React.Component {
         </div>
 
         <div className="row my-4">
-          <div className="col-8 mx-auto">
+          <div className="col-11 col-lg-8 mx-auto">
             <p align="justify">
               This model uses MSG-Net to perform Neural Style Transfer. Upload
               your content image and select a style from one of the styles
@@ -225,7 +225,7 @@ class StyleTransfer extends React.Component {
         </div>
 
         <div className="row my-5">
-          <div className="col-6 mx-auto">
+          <div className="col-11 col-lg-6 mx-auto">
             <Form
               form={this.formName}
               onSubmit={this.onSubmit}

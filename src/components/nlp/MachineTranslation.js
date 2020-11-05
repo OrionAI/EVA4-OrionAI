@@ -29,7 +29,7 @@ class MachineTranslation extends React.Component {
     if (this.props.modelForm.name === this.formName) {
       return (
         <div className="row mt-5">
-          <div className="col-12 col-md-6 mt-4 ml-auto text-center">
+          <div className="col-12 col-lg-6 mt-4 ml-auto text-center">
             <h4 className="text-center">German</h4>
             <div className="card mx-auto shadow p-3 bg-white rounded">
               <div className="card-body">
@@ -37,7 +37,7 @@ class MachineTranslation extends React.Component {
               </div>
             </div>
           </div>
-          <div className="col-12 col-md-6 mt-4 mr-auto text-center">
+          <div className="col-12 col-lg-6 mt-4 mr-auto text-center">
             <h4 className="text-center">English</h4>
             <div className="card mx-auto shadow p-3 bg-white rounded">
               <div className="card-body">
@@ -61,7 +61,7 @@ class MachineTranslation extends React.Component {
         </div>
 
         <div className="row my-4">
-          <div className="col-6 mx-auto">
+          <div className="col-11 col-lg-6 mx-auto">
             <p align="justify">
               This is a machine translation model which can translate a sentence
               in German to English. Since the model was trained on a very small
@@ -77,7 +77,7 @@ class MachineTranslation extends React.Component {
         </div>
 
         <div className="row my-4">
-          <div className="col-6 mx-auto">
+          <div className="col-11 col-lg-6 mx-auto">
             <Form
               form={this.formName}
               onSubmit={this.onSubmit}

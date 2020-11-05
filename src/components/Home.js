@@ -7,7 +7,10 @@ class Home extends React.Component {
     return _.map(this.props.componentItems.faceRecognition.items, item => {
       return (
         <Link to={`/${item.link}`} key={item.link}>
-          <button type="button" className="btn border border-secondary mr-2">
+          <button
+            type="button"
+            className="btn border border-secondary mr-2 mt-2"
+          >
             {item.title}
           </button>
         </Link>
@@ -48,7 +51,7 @@ class Home extends React.Component {
                         <Link to={`/${item.link}`} key={item.link}>
                           <button
                             type="button"
-                            className="btn border border-secondary mx-2"
+                            className="btn border border-secondary mx-2 mt-2"
                           >
                             {item.title}
                           </button>
@@ -80,7 +83,7 @@ class Home extends React.Component {
                       <Link to={`/${item.link}`} key={item.link}>
                         <button
                           type="button"
-                          className="btn border border-secondary mx-2"
+                          className="btn border border-secondary mx-2 mt-2"
                         >
                           {item.title}
                         </button>
@@ -112,7 +115,7 @@ class Home extends React.Component {
                           <Link to={`/${item.link}`}>
                             <button
                               type="button"
-                              className="btn border border-secondary"
+                              className="btn border border-secondary mt-2"
                             >
                               {item.buttonText}
                             </button>

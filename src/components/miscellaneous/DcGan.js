@@ -50,7 +50,7 @@ class DcGan extends React.Component {
         </div>
 
         <div className="row my-4">
-          <div className="col-8 mx-auto">
+          <div className="col-11 col-lg-6 mx-auto">
             <p align="justify">
               This model is a Deep Convolutional Generative Adversarial Network.
               It can be used to generate images of Indian cars. Please click the
@@ -60,7 +60,7 @@ class DcGan extends React.Component {
         </div>
 
         <div className="row my-4">
-          <div className="col-6 mx-auto">
+          <div className="col-11 col-lg-6 mx-auto">
             <form onSubmit={this.props.handleSubmit(this.onSubmit)}>
               <div className="row mt-3">
                 <div className="col mx-auto">

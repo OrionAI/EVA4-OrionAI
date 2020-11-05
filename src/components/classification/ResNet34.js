@@ -61,7 +61,7 @@ class ResNet34 extends React.Component {
         </div>
 
         <div className="row my-4">
-          <div className="col-8 mx-auto">
+          <div className="col-11 col-lg-6 mx-auto">
             <p align="justify">
               This is a ResNet34 model trained on the ImageNet dataset.
             </p>
@@ -69,7 +69,7 @@ class ResNet34 extends React.Component {
         </div>
 
         <div className="row my-4">
-          <div className="col-6 mx-auto">
+          <div className="col-11 col-lg-6 mx-auto">
             <Form
               form={this.formName}
               onSubmit={this.onSubmit}

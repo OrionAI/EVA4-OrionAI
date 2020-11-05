@@ -70,7 +70,7 @@ class HumanPoseEstimation extends React.Component {
         </div>
 
         <div className="row my-4">
-          <div className="col-8 mx-auto">
+          <div className="col-11 col-lg-6 mx-auto">
             <p align="justify">
               This model uses a ResNet-50 model pre-trained on the MPII dataset
               to predict and draw pose of a human in the input image.
@@ -79,7 +79,7 @@ class HumanPoseEstimation extends React.Component {
         </div>
 
         <div className="row my-4">
-          <div className="col-6 mx-auto">
+          <div className="col-11 col-lg-6 mx-auto">
             <Form
               form={this.formName}
               onSubmit={this.onSubmit}
