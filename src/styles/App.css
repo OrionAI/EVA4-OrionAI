@@ -17,6 +17,11 @@ body {
   flex: 1;
 }
 
+.anchor-black {
+  text-decoration: none;
+  color: black;
+}
+
 .heading {
   text-align: center;
   margin-top: 3rem;

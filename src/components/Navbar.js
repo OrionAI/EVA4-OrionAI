@@ -113,6 +113,17 @@ class Navbar extends React.Component {
                 }
               )}
             </ul>
+            <ul className="navbar-nav mr-auto">
+              <li className="nav-item">
+                <a
+                  href="https://github.com/OrionAI/"
+                  className="nav-link"
+                  target="blank"
+                >
+                  GitHub
+                </a>
+              </li>
+            </ul>
           </div>
         </div>
       </nav>
