@@ -57,16 +57,6 @@ class Navbar extends React.Component {
             onClick={this.toggleNavbar}
           >
             <ul className="navbar-nav mr-auto">
-              <li className="nav-item">
-                <Link
-                  to="/"
-                  className={`nav-link ${
-                    activeNavItem === 'home' ? 'active' : ''
-                  }`}
-                >
-                  Home
-                </Link>
-              </li>
               {_.map(
                 this.props.componentItems,
                 (componentItem, componentItemName) => {

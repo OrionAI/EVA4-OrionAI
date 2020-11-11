@@ -16,6 +16,7 @@ import StyleTransfer from './miscellaneous/StyleTransfer';
 import SrGan from './miscellaneous/SrGan';
 import SentimentAnalysis from './nlp/SentimentAnalysis';
 import MachineTranslation from './nlp/MachineTranslation';
+import ImageCaptioning from './miscellaneous/ImageCaptioning';
 import Footer from './Footer';
 
 import '../styles/App.css';
@@ -82,6 +83,11 @@ class App extends React.Component {
             link: 'srgan',
             buttonText: 'SRGAN',
           },
+          {
+            title: 'CNNs + LSTMs',
+            link: 'imagecaptioning',
+            buttonText: 'Image Captioning',
+          },
         ],
       },
       nlp: {
@@ -144,6 +150,11 @@ class App extends React.Component {
                   path="/machinetranslation"
                   exact
                   component={MachineTranslation}
+                />
+                <Route
+                  path="/imagecaptioning"
+                  exact
+                  component={ImageCaptioning}
                 />
               </Switch>
             </div>
