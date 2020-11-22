@@ -7,7 +7,7 @@ export const renderError = ({ error, touched }) => {
   }
 };
 
-export const renderImageField = ({
+export const renderFileField = ({
   input,
   label,
   required,
@@ -96,8 +96,8 @@ export const renderFormField = ({
   options,
   meta,
 }) => {
-  if (contentType === 'image') {
-    return renderImageField({
+  if (contentType === 'file') {
+    return renderFileField({
       input,
       label,
       required,

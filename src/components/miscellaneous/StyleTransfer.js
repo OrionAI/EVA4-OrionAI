@@ -232,7 +232,7 @@ class StyleTransfer extends React.Component {
               fields={[
                 {
                   name: 'content',
-                  contentType: 'image',
+                  contentType: 'file',
                   label: 'Upload Content Image',
                 },
                 {

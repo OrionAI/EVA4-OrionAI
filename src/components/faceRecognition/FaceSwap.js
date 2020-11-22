@@ -210,12 +210,12 @@ class FaceSwap extends React.Component {
               fields={[
                 {
                   name: 'source',
-                  contentType: 'image',
+                  contentType: 'file',
                   label: 'Upload Source Image',
                 },
                 {
                   name: 'target',
-                  contentType: 'image',
+                  contentType: 'file',
                   label: 'Upload Target Image',
                 },
               ]}

@@ -106,7 +106,7 @@ class FaceAlignment extends React.Component {
               fields={[
                 {
                   name: 'image',
-                  contentType: 'image',
+                  contentType: 'file',
                   label: 'Upload Face Image',
                 },
               ]}

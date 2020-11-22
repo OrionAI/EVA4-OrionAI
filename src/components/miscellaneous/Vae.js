@@ -86,7 +86,7 @@ class Vae extends React.Component {
               fields={[
                 {
                   name: 'image',
-                  contentType: 'image',
+                  contentType: 'file',
                   label:
                     'Upload Left Facing Indian Car Image with white background',
                 },

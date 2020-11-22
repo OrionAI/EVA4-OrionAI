@@ -74,7 +74,7 @@ class ResNet34 extends React.Component {
               form={this.formName}
               onSubmit={this.onSubmit}
               fields={[
-                { name: 'image', contentType: 'image', label: 'Upload Image' },
+                { name: 'image', contentType: 'file', label: 'Upload Image' },
               ]}
             />
           </div>

@@ -87,7 +87,7 @@ class SrGan extends React.Component {
               fields={[
                 {
                   name: 'image',
-                  contentType: 'image',
+                  contentType: 'file',
                   label: 'Upload flying drone image',
                 },
               ]}

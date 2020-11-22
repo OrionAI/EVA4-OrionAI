@@ -3,19 +3,30 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 class Home extends React.Component {
-  renderFaceRecognitionLinks() {
-    return _.map(this.props.componentItems.faceRecognition.items, item => {
-      return (
-        <Link to={`/${item.link}`} key={item.link}>
-          <button
-            type="button"
-            className="btn border border-secondary mr-2 mt-2"
-          >
-            {item.title}
-          </button>
-        </Link>
-      );
-    });
+  renderCard({ title, itemList, extraCardClass, buttonHorizontalSpaceClass }) {
+    return (
+      <div className={`col mb-5 ${extraCardClass}`}>
+        <div className="card shadow p-3 bg-white rounded">
+          <div className="card-body text-center">
+            <h3 className="card-title">{title}</h3>
+            <div className="card-text">
+              {_.map(itemList, item => {
+                return (
+                  <Link to={`/${item.link}`} key={item.link}>
+                    <button
+                      type="button"
+                      className={`btn border border-secondary mt-2 ${buttonHorizontalSpaceClass}`}
+                    >
+                      {item.title}
+                    </button>
+                  </Link>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+      </div>
+    );
   }
 
   render() {
@@ -39,61 +50,22 @@ class Home extends React.Component {
           </div>
         </div>
         <div className="row row-cols-1 row-cols-lg-2">
-          <div className="col mb-5">
-            <div className="card shadow p-3 bg-white rounded">
-              <div className="card-body text-center">
-                <h3 className="card-title">Classification Models</h3>
-                <div className="card-text">
-                  {_.map(
-                    this.props.componentItems.classification.items,
-                    item => {
-                      return (
-                        <Link to={`/${item.link}`} key={item.link}>
-                          <button
-                            type="button"
-                            className="btn border border-secondary mx-2 mt-2"
-                          >
-                            {item.title}
-                          </button>
-                        </Link>
-                      );
-                    }
-                  )}
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="col mb-5">
-            <div className="card shadow p-3 bg-white rounded">
-              <div className="card-body text-center">
-                <h3 className="card-title">Face Recognition Models</h3>
-                <div className="card-text">
-                  {this.renderFaceRecognitionLinks()}
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="col mb-5 mx-auto">
-            <div className="card shadow p-3 bg-white rounded">
-              <div className="card-body text-center">
-                <h3 className="card-title">NLP Models</h3>
-                <div className="card-text">
-                  {_.map(this.props.componentItems.nlp.items, item => {
-                    return (
-                      <Link to={`/${item.link}`} key={item.link}>
-                        <button
-                          type="button"
-                          className="btn border border-secondary mx-2 mt-2"
-                        >
-                          {item.title}
-                        </button>
-                      </Link>
-                    );
-                  })}
-                </div>
-              </div>
-            </div>
-          </div>
+          {this.renderCard({
+            title: 'Classification Models',
+            itemList: this.props.componentItems.classification.items,
+            buttonHorizontalSpaceClass: 'mx-2',
+          })}
+          {this.renderCard({
+            title: 'Face Recognition Models',
+            itemList: this.props.componentItems.faceRecognition.items,
+            buttonHorizontalSpaceClass: 'mr-2',
+          })}
+          {this.renderCard({
+            title: 'NLP & Audio Models',
+            itemList: this.props.componentItems.nlp.items,
+            extraCardClass: 'mx-auto',
+            buttonHorizontalSpaceClass: 'mr-2',
+          })}
         </div>
         <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3">
           {_.map(

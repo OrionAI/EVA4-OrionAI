@@ -14,9 +14,9 @@ import DcGan from './miscellaneous/DcGan';
 import Vae from './miscellaneous/Vae';
 import StyleTransfer from './miscellaneous/StyleTransfer';
 import SrGan from './miscellaneous/SrGan';
-import SentimentAnalysis from './nlp/SentimentAnalysis';
-import MachineTranslation from './nlp/MachineTranslation';
 import ImageCaptioning from './miscellaneous/ImageCaptioning';
+import SentimentAnalysis from './sequence/SentimentAnalysis';
+import MachineTranslation from './sequence/MachineTranslation';
 import Footer from './Footer';
 
 import '../styles/App.css';
@@ -91,17 +91,15 @@ class App extends React.Component {
         ],
       },
       nlp: {
-        title: 'NLP',
+        title: 'NLP & Audio',
         items: [
           {
             title: 'Sentiment Analysis',
             link: 'sentimentanalysis',
-            buttonText: 'Sentiment Analysis',
           },
           {
             title: 'Machine Translation',
             link: 'machinetranslation',
-            buttonText: 'Machine Translation',
           },
         ],
       },
@@ -142,6 +140,11 @@ class App extends React.Component {
                 <Route path="/styletransfer" exact component={StyleTransfer} />
                 <Route path="/srgan" exact component={SrGan} />
                 <Route
+                  path="/imagecaptioning"
+                  exact
+                  component={ImageCaptioning}
+                />
+                <Route
                   path="/sentimentanalysis"
                   exact
                   component={SentimentAnalysis}
@@ -150,11 +153,6 @@ class App extends React.Component {
                   path="/machinetranslation"
                   exact
                   component={MachineTranslation}
-                />
-                <Route
-                  path="/imagecaptioning"
-                  exact
-                  component={ImageCaptioning}
                 />
               </Switch>
             </div>

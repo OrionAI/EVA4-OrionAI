@@ -96,7 +96,7 @@ class ImageCaptioning extends React.Component {
               fields={[
                 {
                   name: 'image',
-                  contentType: 'image',
+                  contentType: 'file',
                   label: 'Upload an image',
                 },
               ]}
