@@ -60,8 +60,8 @@ class Form extends React.Component {
           </div>
           <div className="col-12">
             <small>
-              *The model might not give predictions for the first 1-2 times. In
-              such cases, please try again.
+              *The model might take more than 1 min to give predictions for the
+              first time.
             </small>
           </div>
         </div>

@@ -21,14 +21,19 @@ export const submitForm = (url, formName, formValues) => async dispatch => {
     dispatch(loadingForm(formName));
   }
 
-  try {
-    const response = await api.post(url, formValues);
-    dispatch({
-      type: SUBMIT_FORM,
-      payload: { name: formName, data: response.data },
-    });
-  } catch (error) {
-    console.log(error);
+  let numTries = 0;
+  while (numTries >= 0 && numTries <= 2) {
+    try {
+      const response = await api.post(url, formValues);
+      numTries = -1;
+      dispatch({
+        type: SUBMIT_FORM,
+        payload: { name: formName, data: response.data },
+      });
+    } catch (error) {
+      console.log(error.data.message);
+      numTries++;
+    }
   }
 
   if (formName) {
