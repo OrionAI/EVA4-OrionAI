@@ -31,7 +31,7 @@ export const submitForm = (url, formName, formValues) => async dispatch => {
         payload: { name: formName, data: response.data },
       });
     } catch (error) {
-      console.log(error.data.message);
+      console.log(error);
       numTries++;
     }
   }

@@ -17,6 +17,7 @@ import SrGan from './miscellaneous/SrGan';
 import ImageCaptioning from './miscellaneous/ImageCaptioning';
 import SentimentAnalysis from './sequence/SentimentAnalysis';
 import MachineTranslation from './sequence/MachineTranslation';
+import SpeechToText from './sequence/SpeechToText';
 import Footer from './Footer';
 
 import '../styles/App.css';
@@ -101,6 +102,10 @@ class App extends React.Component {
             title: 'Machine Translation',
             link: 'machinetranslation',
           },
+          {
+            title: 'Speech to Text',
+            link: 'speechtotext',
+          },
         ],
       },
     };
@@ -154,6 +159,7 @@ class App extends React.Component {
                   exact
                   component={MachineTranslation}
                 />
+                <Route path="/speechtotext" exact component={SpeechToText} />
               </Switch>
             </div>
           </Router>
