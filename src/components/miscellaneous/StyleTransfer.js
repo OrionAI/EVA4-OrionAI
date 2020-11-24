@@ -38,7 +38,7 @@ class StyleTransfer extends React.Component {
     };
   }
 
-  onSubmit = ({ data, imgURL, otherData }) => {
+  onSubmit = ({ data, objectURL, otherData }) => {
     this.props.submitForm(
       'https://0g0e7jb2ni.execute-api.ap-south-1.amazonaws.com/dev/style',
       this.formName,
@@ -46,7 +46,7 @@ class StyleTransfer extends React.Component {
     );
 
     this.setState({
-      contentImageURL: imgURL.content,
+      contentImageURL: objectURL.content,
       styleImageURL: this.styleMap[otherData.style][1],
     });
   };

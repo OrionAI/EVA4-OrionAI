@@ -13,18 +13,18 @@ class Form extends React.Component {
 
   onSubmit = formValues => {
     const data = new FormData();
-    let imgURL = {};
+    let objectURL = {};
     let otherData = {};
     for (let i in formValues) {
       if (typeof formValues[i] === 'object') {
         data.append(i, formValues[i][0]);
-        imgURL[i] = URL.createObjectURL(formValues[i][0]);
+        objectURL[i] = URL.createObjectURL(formValues[i][0]);
       } else {
         data.append(i, formValues[i]);
         otherData[i] = formValues[i];
       }
     }
-    this.props.onSubmit({ data, imgURL, otherData });
+    this.props.onSubmit({ data, objectURL, otherData });
   };
 
   render() {

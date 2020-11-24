@@ -12,18 +12,18 @@ class ImageCaptioning extends React.Component {
     this.submitButtonRef = React.createRef();
 
     this.state = {
-      imageURL: null,
+      objectURL: null,
     };
   }
 
-  onSubmit = ({ data, imgURL }) => {
+  onSubmit = ({ data, objectURL }) => {
     this.props.submitForm(
       'https://h6wqsfa9dh.execute-api.ap-south-1.amazonaws.com/dev/caption',
       this.formName,
       data
     );
 
-    this.setState({ imageURL: imgURL.image });
+    this.setState({ objectURL: objectURL.image });
   };
 
   renderOutput() {
@@ -37,7 +37,7 @@ class ImageCaptioning extends React.Component {
               style={{ width: '20rem' }}
             >
               <img
-                src={this.state.imageURL}
+                src={this.state.objectURL}
                 className="card-img-top"
                 alt="source"
               />

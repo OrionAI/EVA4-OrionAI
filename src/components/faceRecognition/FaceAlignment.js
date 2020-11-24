@@ -9,21 +9,21 @@ class FaceAlignment extends React.Component {
     super(props);
 
     this.state = {
-      imageURL: null,
+      objectURL: null,
     };
 
     this.formName = 'facealignment';
     this.submitButtonRef = React.createRef();
   }
 
-  onSubmit = ({ data, imgURL }) => {
+  onSubmit = ({ data, objectURL }) => {
     this.props.submitForm(
       'https://tq1mihfdxd.execute-api.ap-south-1.amazonaws.com/dev/align',
       this.formName,
       data
     );
 
-    this.setState({ imageURL: imgURL.image });
+    this.setState({ objectURL: objectURL.image });
   };
 
   renderOutput() {
@@ -34,7 +34,7 @@ class FaceAlignment extends React.Component {
             <div className="col-12 col-md-6 mt-4 ml-auto text-center">
               <div className="card mx-auto" style={{ width: '20rem' }}>
                 <img
-                  src={this.state.imageURL}
+                  src={this.state.objectURL}
                   className="card-img-top"
                   alt="source"
                 />

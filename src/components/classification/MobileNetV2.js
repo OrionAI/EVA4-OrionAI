@@ -9,21 +9,21 @@ class MobileNetV2 extends React.Component {
     super(props);
 
     this.state = {
-      imageURL: null,
+      objectURL: null,
     };
 
     this.formName = 'mobilenetv2';
     this.submitButtonRef = React.createRef();
   }
 
-  onSubmit = ({ data, imgURL }) => {
+  onSubmit = ({ data, objectURL }) => {
     this.props.submitForm(
       'https://5a7jq62zm2.execute-api.ap-south-1.amazonaws.com/dev/classify',
       this.formName,
       data
     );
 
-    this.setState({ imageURL: imgURL.image });
+    this.setState({ objectURL: objectURL.image });
   };
 
   renderOutput() {
@@ -33,7 +33,7 @@ class MobileNetV2 extends React.Component {
           <div className="col">
             <div className="card mx-auto" style={{ width: '20rem' }}>
               <img
-                src={this.state.imageURL}
+                src={this.state.objectURL}
                 className="card-img-top"
                 alt="dum"
               />

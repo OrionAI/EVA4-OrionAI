@@ -9,21 +9,21 @@ class ResNet34 extends React.Component {
     super(props);
 
     this.state = {
-      imageURL: null,
+      objectURL: null,
     };
 
     this.formName = 'resnet34';
     this.submitButtonRef = React.createRef();
   }
 
-  onSubmit = ({ data, imgURL }) => {
+  onSubmit = ({ data, objectURL }) => {
     this.props.submitForm(
       'https://ji5h693qhd.execute-api.ap-south-1.amazonaws.com/dev/classify_image',
       this.formName,
       data
     );
 
-    this.setState({ imageURL: imgURL.image });
+    this.setState({ objectURL: objectURL.image });
   };
 
   renderOutput() {
@@ -33,14 +33,14 @@ class ResNet34 extends React.Component {
           <div className="col">
             <div className="card mx-auto" style={{ width: '20rem' }}>
               <img
-                src={this.state.imageURL}
+                src={this.state.objectURL}
                 className="card-img-top"
                 alt="dum"
               />
               <div className="card-body">
                 <h5 className="card-title">Prediction</h5>
                 <p className="card-text">
-                  {this.props.modelForm.data['predicted_name']}
+                  {this.props.modelForm.data['predicted name']}
                 </p>
               </div>
             </div>

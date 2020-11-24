@@ -17,7 +17,7 @@ class FaceSwap extends React.Component {
     this.submitButtonRef = React.createRef();
   }
 
-  onSubmit = ({ data, imgURL }) => {
+  onSubmit = ({ data, objectURL }) => {
     this.props.submitForm(
       'https://taqm4e1fg3.execute-api.ap-south-1.amazonaws.com/dev/swap',
       this.formName,
@@ -25,8 +25,8 @@ class FaceSwap extends React.Component {
     );
 
     this.setState({
-      sourceImageURL: imgURL.source,
-      targetImageURL: imgURL.target,
+      sourceImageURL: objectURL.source,
+      targetImageURL: objectURL.target,
     });
   };
 

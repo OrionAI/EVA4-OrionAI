@@ -89,8 +89,8 @@ class MachineTranslation extends React.Component {
                 },
               ]}
               buttonText={{
-                originalText: 'Translate',
-                loadingText: 'Translating',
+                originalText: 'Übersetzen',
+                loadingText: 'Übersetzen',
               }}
             />
           </div>

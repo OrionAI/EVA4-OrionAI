@@ -9,14 +9,14 @@ class FaceRecognition extends React.Component {
     super(props);
 
     this.state = {
-      imageURL: null,
+      objectURL: null,
     };
 
     this.formName = 'facerecognition';
     this.submitButtonRef = React.createRef();
   }
 
-  onSubmit = ({ data, imgURL }) => {
+  onSubmit = ({ data, objectURL }) => {
     this.props.recognizeFace({
       alignURL:
         'https://tq1mihfdxd.execute-api.ap-south-1.amazonaws.com/dev/align',
@@ -26,7 +26,7 @@ class FaceRecognition extends React.Component {
       formValues: data,
     });
 
-    this.setState({ imageURL: imgURL.image });
+    this.setState({ objectURL: objectURL.image });
   };
 
   renderOutputSmallDisplay() {
@@ -35,7 +35,7 @@ class FaceRecognition extends React.Component {
         <div className="col-12 d-block d-md-none mx-auto text-center">
           <h3 className="text-center mb-2">Input Image</h3>
           <img
-            src={this.state.imageURL}
+            src={this.state.objectURL}
             className="card-img-top"
             alt="input"
             style={{ width: '20rem' }}
@@ -57,7 +57,7 @@ class FaceRecognition extends React.Component {
         <div className="col-7 d-none d-md-block ml-auto text-center">
           <h3 className="text-center mb-5">Input Image</h3>
           <img
-            src={this.state.imageURL}
+            src={this.state.objectURL}
             className="card-img-top"
             alt="input"
             style={{ width: '30rem' }}
