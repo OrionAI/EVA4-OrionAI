@@ -16,12 +16,12 @@ class Vae extends React.Component {
     this.submitButtonRef = React.createRef();
   }
 
-  onSubmit = ({ data, objectURL }) => {
-    this.props.submitForm(
-      'https://zxpgsttdeh.execute-api.ap-south-1.amazonaws.com/dev/vae',
-      this.formName,
-      data
-    );
+  onSubmit = ({ formData, objectURL }) => {
+    this.props.submitForm({
+      url: 'https://zxpgsttdeh.execute-api.ap-south-1.amazonaws.com/dev/vae',
+      formName: this.formName,
+      formData,
+    });
 
     this.setState({ objectURL: objectURL.image });
   };

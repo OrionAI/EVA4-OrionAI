@@ -1,12 +1,12 @@
 import api from '../apis/aws';
 
-export const networkTransaction = async ({ url, formValues, requestType }) => {
+export const networkTransaction = async ({ url, formData, requestType }) => {
   let response = null;
   let numTries = 0;
   while (numTries >= 0 && numTries <= 2) {
     try {
       if (requestType === 'post') {
-        response = await api.post(url, formValues);
+        response = await api.post(url, formData);
       } else {
         response = await api.get(url);
       }

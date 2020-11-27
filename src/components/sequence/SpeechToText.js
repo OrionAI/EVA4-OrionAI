@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { submitFormList } from '../../actions';
+import { submitForm } from '../../actions';
 import Form from '../Form';
 
 class SpeechToText extends React.Component {
@@ -12,14 +12,14 @@ class SpeechToText extends React.Component {
     this.submitButtonRef = React.createRef();
   }
 
-  onSubmit = ({ data }) => {
-    this.props.submitFormList({
+  onSubmit = ({ formData }) => {
+    this.props.submitForm({
       url: [
         'https://prmttt5z7a.execute-api.ap-south-1.amazonaws.com/dev/convert',
         'https://8krxpgofzh.execute-api.ap-south-1.amazonaws.com/dev/stt',
       ],
       formName: this.formName,
-      formValues: data,
+      formData,
       type: 'audio/wav',
     });
   };
@@ -131,4 +131,4 @@ const mapStateToProps = ({ modelForm }) => {
   return { modelForm };
 };
 
-export default connect(mapStateToProps, { submitFormList })(SpeechToText);
+export default connect(mapStateToProps, { submitForm })(SpeechToText);

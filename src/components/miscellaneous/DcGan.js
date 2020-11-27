@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { reduxForm } from 'redux-form';
 
-import { submitGetForm } from '../../actions';
+import { submitForm } from '../../actions';
 import { renderSubmitButton } from '../../utils';
 
 class DcGan extends React.Component {
@@ -12,10 +12,11 @@ class DcGan extends React.Component {
   }
 
   onSubmit = () => {
-    this.props.submitGetForm(
-      'https://etm0x19qn5.execute-api.ap-south-1.amazonaws.com/dev/gan',
-      this.props.form
-    );
+    this.props.submitForm({
+      url: 'https://etm0x19qn5.execute-api.ap-south-1.amazonaws.com/dev/gan',
+      formName: this.props.form,
+      requestType: 'get',
+    });
   };
 
   renderOutput() {
@@ -92,6 +93,6 @@ const mapStateToProps = ({ modelForm, loadingForm }) => {
   return { modelForm, loadingForm };
 };
 
-export default connect(mapStateToProps, { submitGetForm })(
+export default connect(mapStateToProps, { submitForm })(
   reduxForm({ form: 'dcgan' })(DcGan)
 );

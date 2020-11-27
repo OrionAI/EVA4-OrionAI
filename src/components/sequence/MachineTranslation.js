@@ -16,13 +16,14 @@ class MachineTranslation extends React.Component {
     };
   }
 
-  onSubmit = ({ data, otherData }) => {
+  onSubmit = ({ formData, otherData }) => {
     this.setState({ inputText: otherData.text });
-    this.props.submitForm(
-      'https://zr7hdctbgd.execute-api.ap-south-1.amazonaws.com/dev/translate',
-      this.formName,
-      data
-    );
+    this.props.submitForm({
+      url:
+        'https://zr7hdctbgd.execute-api.ap-south-1.amazonaws.com/dev/translate',
+      formName: this.formName,
+      formData,
+    });
   };
 
   renderOutput() {

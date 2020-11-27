@@ -38,12 +38,12 @@ class StyleTransfer extends React.Component {
     };
   }
 
-  onSubmit = ({ data, objectURL, otherData }) => {
-    this.props.submitForm(
-      'https://0g0e7jb2ni.execute-api.ap-south-1.amazonaws.com/dev/style',
-      this.formName,
-      data
-    );
+  onSubmit = ({ formData, objectURL, otherData }) => {
+    this.props.submitForm({
+      url: 'https://0g0e7jb2ni.execute-api.ap-south-1.amazonaws.com/dev/style',
+      formName: this.formName,
+      formData,
+    });
 
     this.setState({
       contentImageURL: objectURL.content,

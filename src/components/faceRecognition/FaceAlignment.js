@@ -16,12 +16,12 @@ class FaceAlignment extends React.Component {
     this.submitButtonRef = React.createRef();
   }
 
-  onSubmit = ({ data, objectURL }) => {
-    this.props.submitForm(
-      'https://tq1mihfdxd.execute-api.ap-south-1.amazonaws.com/dev/align',
-      this.formName,
-      data
-    );
+  onSubmit = ({ formData, objectURL }) => {
+    this.props.submitForm({
+      url: 'https://tq1mihfdxd.execute-api.ap-south-1.amazonaws.com/dev/align',
+      formName: this.formName,
+      formData,
+    });
 
     this.setState({ objectURL: objectURL.image });
   };

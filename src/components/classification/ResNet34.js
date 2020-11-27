@@ -16,12 +16,13 @@ class ResNet34 extends React.Component {
     this.submitButtonRef = React.createRef();
   }
 
-  onSubmit = ({ data, objectURL }) => {
-    this.props.submitForm(
-      'https://ji5h693qhd.execute-api.ap-south-1.amazonaws.com/dev/classify_image',
-      this.formName,
-      data
-    );
+  onSubmit = ({ formData, objectURL }) => {
+    this.props.submitForm({
+      url:
+        'https://ji5h693qhd.execute-api.ap-south-1.amazonaws.com/dev/classify_image',
+      formName: this.formName,
+      formData,
+    });
 
     this.setState({ objectURL: objectURL.image });
   };

@@ -16,14 +16,25 @@ export const clearLoadingForm = formName => {
   };
 };
 
-export const submitFormList = ({
+export const submitForm = ({
   url,
   formName,
-  formValues,
+  formData,
   type,
+  requestType,
 }) => async dispatch => {
   if (formName) {
     dispatch(loadingForm(formName));
+  }
+
+  // Default request type is post
+  if (!requestType) {
+    requestType = 'post';
+  }
+
+  // If only single url given insert it to an array
+  if (!Array.isArray(url)) {
+    url = [url];
   }
 
   // The last url response does not need to be converted to file
@@ -32,8 +43,8 @@ export const submitFormList = ({
   for (let i = 0; i < url.length - 1; i++) {
     response = await networkTransaction({
       url: url[i],
-      formValues,
-      requestType: 'post',
+      formData,
+      requestType,
     });
 
     // Data returned is string which has to be converted to file object
@@ -42,56 +53,26 @@ export const submitFormList = ({
     ).then(res => res.blob());
     let responseFile = new File([responseBlob], 'recording.wav', { type });
 
-    formValues = new FormData();
-    formValues.append('data', responseFile);
+    formData = new FormData();
+    formData.append('data', responseFile);
   }
 
   // Processing the last url in list to display in webpage
   response = await networkTransaction({
     url: url.pop(),
-    formValues,
-    requestType: 'post',
+    formData,
+    requestType,
   });
+
+  // If response is null then this will avoid throwing error
+  let responseData = response;
+  if (response) {
+    responseData = response.data;
+  }
 
   dispatch({
     type: SUBMIT_FORM,
-    payload: { name: formName, data: response.data },
-  });
-
-  if (formName) {
-    dispatch(clearLoadingForm(formName));
-  }
-};
-
-export const submitForm = (url, formName, formValues) => async dispatch => {
-  if (formName) {
-    dispatch(loadingForm(formName));
-  }
-
-  const response = await networkTransaction({
-    url,
-    formValues,
-    requestType: 'post',
-  });
-  dispatch({
-    type: SUBMIT_FORM,
-    payload: { name: formName, data: response.data },
-  });
-
-  if (formName) {
-    dispatch(clearLoadingForm(formName));
-  }
-};
-
-export const submitGetForm = (url, formName) => async dispatch => {
-  if (formName) {
-    dispatch(loadingForm(formName));
-  }
-
-  const response = await networkTransaction({ url, requestType: 'get' });
-  dispatch({
-    type: SUBMIT_FORM,
-    payload: { name: formName, data: response.data },
+    payload: { name: formName, data: responseData },
   });
 
   if (formName) {

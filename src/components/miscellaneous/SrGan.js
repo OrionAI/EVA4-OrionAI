@@ -16,12 +16,12 @@ class SrGan extends React.Component {
     this.submitButtonRef = React.createRef();
   }
 
-  onSubmit = ({ data, objectURL }) => {
-    this.props.submitForm(
-      'https://kft1ntmfe2.execute-api.ap-south-1.amazonaws.com/dev/srgan',
-      this.formName,
-      data
-    );
+  onSubmit = ({ formData, objectURL }) => {
+    this.props.submitForm({
+      url: 'https://kft1ntmfe2.execute-api.ap-south-1.amazonaws.com/dev/srgan',
+      formName: this.formName,
+      formData,
+    });
 
     this.setState({ objectURL: objectURL.image });
   };

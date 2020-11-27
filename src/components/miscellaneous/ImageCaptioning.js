@@ -16,12 +16,13 @@ class ImageCaptioning extends React.Component {
     };
   }
 
-  onSubmit = ({ data, objectURL }) => {
-    this.props.submitForm(
-      'https://h6wqsfa9dh.execute-api.ap-south-1.amazonaws.com/dev/caption',
-      this.formName,
-      data
-    );
+  onSubmit = ({ formData, objectURL }) => {
+    this.props.submitForm({
+      url:
+        'https://h6wqsfa9dh.execute-api.ap-south-1.amazonaws.com/dev/caption',
+      formName: this.formName,
+      formData,
+    });
 
     this.setState({ objectURL: objectURL.image });
   };

@@ -16,13 +16,14 @@ class SentimentAnalysis extends React.Component {
     };
   }
 
-  onSubmit = ({ data, otherData }) => {
+  onSubmit = ({ formData, otherData }) => {
     this.setState({ inputText: otherData.text });
-    this.props.submitForm(
-      'https://zxj1gtrcp1.execute-api.ap-south-1.amazonaws.com/dev/sentiment',
-      this.formName,
-      data
-    );
+    this.props.submitForm({
+      url:
+        'https://zxj1gtrcp1.execute-api.ap-south-1.amazonaws.com/dev/sentiment',
+      formName: this.formName,
+      formData,
+    });
   };
 
   renderOutput() {

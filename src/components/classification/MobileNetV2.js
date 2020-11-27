@@ -16,12 +16,13 @@ class MobileNetV2 extends React.Component {
     this.submitButtonRef = React.createRef();
   }
 
-  onSubmit = ({ data, objectURL }) => {
-    this.props.submitForm(
-      'https://5a7jq62zm2.execute-api.ap-south-1.amazonaws.com/dev/classify',
-      this.formName,
-      data
-    );
+  onSubmit = ({ formData, objectURL }) => {
+    this.props.submitForm({
+      url:
+        'https://5a7jq62zm2.execute-api.ap-south-1.amazonaws.com/dev/classify',
+      formName: this.formName,
+      formData,
+    });
 
     this.setState({ objectURL: objectURL.image });
   };

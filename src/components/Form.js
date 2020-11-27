@@ -13,7 +13,7 @@ class Form extends React.Component {
   }
 
   onSubmit = formValues => {
-    const data = new FormData();
+    const formData = new FormData();
     let objectURL = {};
     let otherData = {};
     for (let i in formValues) {
@@ -22,14 +22,14 @@ class Form extends React.Component {
         if (objectItem.length) {
           objectItem = objectItem[0];
         }
-        data.append(i, objectItem);
+        formData.append(i, objectItem);
         objectURL[i] = URL.createObjectURL(objectItem);
       } else {
-        data.append(i, formValues[i]);
+        formData.append(i, formValues[i]);
         otherData[i] = formValues[i];
       }
     }
-    this.props.onSubmit({ data, objectURL, otherData });
+    this.props.onSubmit({ formData, objectURL, otherData });
   };
 
   render() {
