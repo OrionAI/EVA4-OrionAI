@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/EVA4-OrionAI/static/css/main.680578b7.chunk.css",
+    "main.js": "/EVA4-OrionAI/static/js/main.952aca5c.chunk.js",
+    "main.js.map": "/EVA4-OrionAI/static/js/main.952aca5c.chunk.js.map",
+    "runtime-main.js": "/EVA4-OrionAI/static/js/runtime-main.389382f2.js",
+    "runtime-main.js.map": "/EVA4-OrionAI/static/js/runtime-main.389382f2.js.map",
+    "static/js/2.a052143a.chunk.js": "/EVA4-OrionAI/static/js/2.a052143a.chunk.js",
+    "static/js/2.a052143a.chunk.js.map": "/EVA4-OrionAI/static/js/2.a052143a.chunk.js.map",
+    "index.html": "/EVA4-OrionAI/index.html",
+    "precache-manifest.fcfe3bcf9316c7499b091926fe7628fe.js": "/EVA4-OrionAI/precache-manifest.fcfe3bcf9316c7499b091926fe7628fe.js",
+    "service-worker.js": "/EVA4-OrionAI/service-worker.js",
+    "static/css/main.680578b7.chunk.css.map": "/EVA4-OrionAI/static/css/main.680578b7.chunk.css.map",
+    "static/js/2.a052143a.chunk.js.LICENSE.txt": "/EVA4-OrionAI/static/js/2.a052143a.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.389382f2.js",
+    "static/js/2.a052143a.chunk.js",
+    "static/css/main.680578b7.chunk.css",
+    "static/js/main.952aca5c.chunk.js"
+  ]
+}
