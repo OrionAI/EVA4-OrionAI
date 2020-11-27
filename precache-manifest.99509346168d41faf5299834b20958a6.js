@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "846d88f88614e711b9b656a43276608a",
+    "revision": "e96e04a431820d7aedcfb473da68e689",
     "url": "/EVA4-OrionAI/index.html"
   },
   {

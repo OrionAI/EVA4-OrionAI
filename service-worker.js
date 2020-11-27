@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/EVA4-OrionAI/precache-manifest.fcfe3bcf9316c7499b091926fe7628fe.js"
+  "/EVA4-OrionAI/precache-manifest.99509346168d41faf5299834b20958a6.js"
 );
 
 self.addEventListener('message', (event) => {
