@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { submitForm } from '../../actions';
+import { submitFormList } from '../../actions';
 import Form from '../Form';
 
 class SpeechToText extends React.Component {
@@ -13,11 +13,15 @@ class SpeechToText extends React.Component {
   }
 
   onSubmit = ({ data }) => {
-    this.props.submitForm(
-      'https://8krxpgofzh.execute-api.ap-south-1.amazonaws.com/dev/stt',
-      this.formName,
-      data
-    );
+    this.props.submitFormList({
+      url: [
+        'https://prmttt5z7a.execute-api.ap-south-1.amazonaws.com/dev/convert',
+        'https://8krxpgofzh.execute-api.ap-south-1.amazonaws.com/dev/stt',
+      ],
+      formName: this.formName,
+      formValues: data,
+      type: 'audio/wav',
+    });
   };
 
   renderOutput() {
@@ -98,10 +102,6 @@ class SpeechToText extends React.Component {
                 </ul>
               </div>
             </div>
-            <br />
-            <p>
-              <i>Note: The uploaded audio should be in WAV format.</i>
-            </p>
           </div>
         </div>
 
@@ -113,8 +113,8 @@ class SpeechToText extends React.Component {
               fields={[
                 {
                   name: 'audio',
-                  contentType: 'file',
-                  label: 'Upload a recorded audio',
+                  contentType: 'audio',
+                  label: 'Record audio',
                 },
               ]}
             />
@@ -131,4 +131,4 @@ const mapStateToProps = ({ modelForm }) => {
   return { modelForm };
 };
 
-export default connect(mapStateToProps, { submitForm })(SpeechToText);
+export default connect(mapStateToProps, { submitFormList })(SpeechToText);

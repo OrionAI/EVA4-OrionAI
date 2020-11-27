@@ -1,6 +1,6 @@
 import api from '../apis/aws';
 import { LOADING_FORM, CLEAR_LOADING_FORM, SUBMIT_FORM } from './types';
-import { dataURLtoFile } from './utils';
+import { networkTransaction, dataURLtoFile } from './utils';
 
 export const loadingForm = formName => {
   return {
@@ -16,25 +16,67 @@ export const clearLoadingForm = formName => {
   };
 };
 
+export const submitFormList = ({
+  url,
+  formName,
+  formValues,
+  type,
+}) => async dispatch => {
+  if (formName) {
+    dispatch(loadingForm(formName));
+  }
+
+  // The last url response does not need to be converted to file
+  // so we skip it
+  let response = null;
+  for (let i = 0; i < url.length - 1; i++) {
+    response = await networkTransaction({
+      url: url[i],
+      formValues,
+      requestType: 'post',
+    });
+
+    // Data returned is string which has to be converted to file object
+    let responseBlob = await fetch(
+      `data:${type};base64,${response.data.data}`
+    ).then(res => res.blob());
+    let responseFile = new File([responseBlob], 'recording.wav', { type });
+
+    formValues = new FormData();
+    formValues.append('data', responseFile);
+  }
+
+  // Processing the last url in list to display in webpage
+  response = await networkTransaction({
+    url: url.pop(),
+    formValues,
+    requestType: 'post',
+  });
+
+  dispatch({
+    type: SUBMIT_FORM,
+    payload: { name: formName, data: response.data },
+  });
+
+  if (formName) {
+    dispatch(clearLoadingForm(formName));
+  }
+};
+
 export const submitForm = (url, formName, formValues) => async dispatch => {
   if (formName) {
     dispatch(loadingForm(formName));
   }
 
-  let numTries = 0;
-  while (numTries >= 0 && numTries <= 2) {
-    try {
-      const response = await api.post(url, formValues);
-      numTries = -1;
-      dispatch({
-        type: SUBMIT_FORM,
-        payload: { name: formName, data: response.data },
-      });
-    } catch (error) {
-      console.log(error);
-      numTries++;
-    }
-  }
+  const response = await networkTransaction({
+    url,
+    formValues,
+    requestType: 'post',
+  });
+  dispatch({
+    type: SUBMIT_FORM,
+    payload: { name: formName, data: response.data },
+  });
 
   if (formName) {
     dispatch(clearLoadingForm(formName));
@@ -46,15 +88,11 @@ export const submitGetForm = (url, formName) => async dispatch => {
     dispatch(loadingForm(formName));
   }
 
-  try {
-    const response = await api.get(url);
-    dispatch({
-      type: SUBMIT_FORM,
-      payload: { name: formName, data: response.data },
-    });
-  } catch (error) {
-    console.log(error);
-  }
+  const response = await networkTransaction({ url, requestType: 'get' });
+  dispatch({
+    type: SUBMIT_FORM,
+    payload: { name: formName, data: response.data },
+  });
 
   if (formName) {
     dispatch(clearLoadingForm(formName));

@@ -3,6 +3,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 
+import Recorder from './Recorder';
 import { renderFormField, renderSubmitButton } from '../utils';
 
 class Form extends React.Component {
@@ -17,8 +18,12 @@ class Form extends React.Component {
     let otherData = {};
     for (let i in formValues) {
       if (typeof formValues[i] === 'object') {
-        data.append(i, formValues[i][0]);
-        objectURL[i] = URL.createObjectURL(formValues[i][0]);
+        let objectItem = formValues[i];
+        if (objectItem.length) {
+          objectItem = objectItem[0];
+        }
+        data.append(i, objectItem);
+        objectURL[i] = URL.createObjectURL(objectItem);
       } else {
         data.append(i, formValues[i]);
         otherData[i] = formValues[i];
@@ -38,17 +43,29 @@ class Form extends React.Component {
     return (
       <form onSubmit={this.props.handleSubmit(this.onSubmit)}>
         {_.map(this.props.fields, item => {
-          return (
-            <Field
-              name={item.name}
-              key={item.name}
-              component={renderFormField}
-              contentType={item.contentType}
-              label={item.label}
-              options={item.options}
-              required
-            />
-          );
+          if (item.contentType === 'audio') {
+            return (
+              <Field
+                name={item.name}
+                key={item.name}
+                component={Recorder}
+                label={item.label}
+                required
+              />
+            );
+          } else {
+            return (
+              <Field
+                name={item.name}
+                key={item.name}
+                component={renderFormField}
+                contentType={item.contentType}
+                label={item.label}
+                options={item.options}
+                required
+              />
+            );
+          }
         })}
         <div className="row mt-3">
           <div className="col mx-auto">

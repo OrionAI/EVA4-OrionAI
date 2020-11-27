@@ -1,3 +1,24 @@
+import api from '../apis/aws';
+
+export const networkTransaction = async ({ url, formValues, requestType }) => {
+  let response = null;
+  let numTries = 0;
+  while (numTries >= 0 && numTries <= 2) {
+    try {
+      if (requestType === 'post') {
+        response = await api.post(url, formValues);
+      } else {
+        response = await api.get(url);
+      }
+      numTries = -1;
+    } catch (error) {
+      console.log(error);
+      numTries++;
+    }
+  }
+  return response;
+};
+
 export const dataURLtoFile = (dataurl, filename) => {
   const arr = dataurl.split(',');
   const mime = arr[0].match(/:(.*?);/)[1];
