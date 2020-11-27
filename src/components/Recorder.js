@@ -41,7 +41,7 @@ class Recorder extends React.Component {
       <ReactMediaRecorder
         audio={true}
         video={false}
-        blobPropertyBag={{ type: 'audio/mpeg' }}
+        blobPropertyBag={{ type: 'audio/wav' }}
         onStop={(audioBlobUrl, audioBlob) =>
           this.onStopRecording(audioBlob, onChange)
         }
