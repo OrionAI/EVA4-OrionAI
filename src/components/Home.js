@@ -40,7 +40,7 @@ class Home extends React.Component {
                 style={{ height: '5rem' }}
                 alt="logo"
               />{' '}
-              Welcome to Orion AI
+              Orion AI
             </h1>
           </div>
         </div>
