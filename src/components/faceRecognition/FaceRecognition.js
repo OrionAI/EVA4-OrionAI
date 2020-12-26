@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { recognizeFace } from '../../actions';
+import { submitForm } from '../../actions';
 import Form from '../Form';
 
 class FaceRecognition extends React.Component {
@@ -16,14 +16,14 @@ class FaceRecognition extends React.Component {
     this.submitButtonRef = React.createRef();
   }
 
-  onSubmit = ({ data, objectURL }) => {
-    this.props.recognizeFace({
-      alignURL:
+  onSubmit = ({ formData, objectURL }) => {
+    this.props.submitForm({
+      url: [
         'https://tq1mihfdxd.execute-api.ap-south-1.amazonaws.com/dev/align',
-      recognizeURL:
         'https://3ggdkd4lo4.execute-api.ap-south-1.amazonaws.com/dev/recognize',
+      ],
       formName: this.formName,
-      formValues: data,
+      formData: formData,
     });
 
     this.setState({ objectURL: objectURL.image });
@@ -162,4 +162,4 @@ const mapStateToProps = ({ modelForm }) => {
   return { modelForm };
 };
 
-export default connect(mapStateToProps, { recognizeFace })(FaceRecognition);
+export default connect(mapStateToProps, { submitForm })(FaceRecognition);
