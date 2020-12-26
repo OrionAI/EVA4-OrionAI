@@ -1,22 +1,22 @@
 {
   "files": {
     "main.css": "/EVA4-OrionAI/static/css/main.680578b7.chunk.css",
-    "main.js": "/EVA4-OrionAI/static/js/main.55609eab.chunk.js",
-    "main.js.map": "/EVA4-OrionAI/static/js/main.55609eab.chunk.js.map",
+    "main.js": "/EVA4-OrionAI/static/js/main.3280b995.chunk.js",
+    "main.js.map": "/EVA4-OrionAI/static/js/main.3280b995.chunk.js.map",
     "runtime-main.js": "/EVA4-OrionAI/static/js/runtime-main.389382f2.js",
     "runtime-main.js.map": "/EVA4-OrionAI/static/js/runtime-main.389382f2.js.map",
-    "static/js/2.a052143a.chunk.js": "/EVA4-OrionAI/static/js/2.a052143a.chunk.js",
-    "static/js/2.a052143a.chunk.js.map": "/EVA4-OrionAI/static/js/2.a052143a.chunk.js.map",
+    "static/js/2.6f8b7670.chunk.js": "/EVA4-OrionAI/static/js/2.6f8b7670.chunk.js",
+    "static/js/2.6f8b7670.chunk.js.map": "/EVA4-OrionAI/static/js/2.6f8b7670.chunk.js.map",
     "index.html": "/EVA4-OrionAI/index.html",
-    "precache-manifest.1787025bc902fd9e175035e5a320bac0.js": "/EVA4-OrionAI/precache-manifest.1787025bc902fd9e175035e5a320bac0.js",
+    "precache-manifest.9ec9621511727171fc1daa663b5e591a.js": "/EVA4-OrionAI/precache-manifest.9ec9621511727171fc1daa663b5e591a.js",
     "service-worker.js": "/EVA4-OrionAI/service-worker.js",
     "static/css/main.680578b7.chunk.css.map": "/EVA4-OrionAI/static/css/main.680578b7.chunk.css.map",
-    "static/js/2.a052143a.chunk.js.LICENSE.txt": "/EVA4-OrionAI/static/js/2.a052143a.chunk.js.LICENSE.txt"
+    "static/js/2.6f8b7670.chunk.js.LICENSE.txt": "/EVA4-OrionAI/static/js/2.6f8b7670.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.389382f2.js",
-    "static/js/2.a052143a.chunk.js",
+    "static/js/2.6f8b7670.chunk.js",
     "static/css/main.680578b7.chunk.css",
-    "static/js/main.55609eab.chunk.js"
+    "static/js/main.3280b995.chunk.js"
   ]
 }
