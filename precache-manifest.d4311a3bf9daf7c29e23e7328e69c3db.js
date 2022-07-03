@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "743ab850dc197b4892d7bf1664a1c70b",
+    "revision": "44a3303f2cfa1a3d3a1032a7b2ab9de8",
     "url": "/EVA4-OrionAI/index.html"
   },
   {
-    "revision": "3531adce61c52108f00b",
+    "revision": "54c9a651d7be7562228b",
     "url": "/EVA4-OrionAI/static/css/main.680578b7.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/EVA4-OrionAI/static/js/2.6f8b7670.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "3531adce61c52108f00b",
-    "url": "/EVA4-OrionAI/static/js/main.fc02609e.chunk.js"
+    "revision": "54c9a651d7be7562228b",
+    "url": "/EVA4-OrionAI/static/js/main.ef4d2af2.chunk.js"
   },
   {
     "revision": "f4c50e4287e04d60b179",
