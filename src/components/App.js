@@ -19,6 +19,7 @@ import SentimentAnalysis from './sequence/SentimentAnalysis';
 import MachineTranslation from './sequence/MachineTranslation';
 import SpeechToText from './sequence/SpeechToText';
 import Footer from './Footer';
+import ServiceAlert from './ServiceAlert';
 
 import '../styles/App.css';
 
@@ -111,31 +112,6 @@ class App extends React.Component {
     };
   }
 
-  renderBackendShutdownAlert() {
-    return (
-      <div class="alert alert-success mt-5" role="alert">
-        <h4 class="alert-heading">Backend Shutdown!</h4>
-        <p>
-          In order to save server costs, all the backend services for this
-          portal have been shutdown. This means that none of the models in this
-          portal will give any output.
-        </p>
-        <hr />
-        <p class="mb-0">
-          To get the backend functionality back, please refer to the{' '}
-          <a
-            href="https://github.com/OrionAI/EVA4-Phase-2"
-            className="alert-link"
-          >
-            EVA4-Phase-2
-          </a>{' '}
-          GitHub repository for instructions to setup your own backend servers
-          on AWS.
-        </p>
-      </div>
-    );
-  }
-
   render() {
     return (
       <div className="page-container">
@@ -143,7 +119,7 @@ class App extends React.Component {
           <Router history={history}>
             <Navbar componentItems={this.componentItems} />
             <div className="container">
-              {this.renderBackendShutdownAlert()}
+              <ServiceAlert />
               <Switch>
                 <Route
                   path="/"
